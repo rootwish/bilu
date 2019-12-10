@@ -1,10 +1,16 @@
 package com.rootwish.bilu.controller;
 
+import com.rootwish.bilu.model.Smoke;
 import de.felixroske.jfxsupport.FXMLController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,10 +19,16 @@ import java.util.ResourceBundle;
  * 中文
  */
 @FXMLController
-public class IndexController implements Initializable {
+public class TreeViewController implements Initializable {
 
     @FXML
     private TreeView treeView;
+
+    @FXML
+    private TableView tableView;
+
+    @FXML
+    private TableColumn type ,num, price;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -38,6 +50,17 @@ public class IndexController implements Initializable {
         item = new TreeItem<> ("烟叶烟丝");
         rootItem.getChildren().add(item);
         TreeView<String> tree = new TreeView<> (rootItem);
+
+        ObservableList<Smoke> list = FXCollections.observableArrayList();
+        Smoke smoke = new Smoke();//构建值对象
+        smoke.setType("小六");
+        smoke.setNum("123");
+        smoke.setPrice("233");
+        type.setCellValueFactory(new PropertyValueFactory("type"));//映射
+        num.setCellValueFactory(new PropertyValueFactory("num"));
+        price.setCellValueFactory(new PropertyValueFactory("price"));
+        list.add(smoke);        //list添加值对象
+        tableView.setItems(list); //tableview添加list
     }
 
 }
