@@ -18,9 +18,9 @@ public class InformationEntity {
     @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
     //查获时间
-    private String seized_time;
+    private String seizedTime;
     //笔录开始时间
-    private String start_time;
+    private String startTime;
     //询问地点（手工输入）
     private String site;
     //证件类型(身份证 驾驶证 暂住证 临时身份证)

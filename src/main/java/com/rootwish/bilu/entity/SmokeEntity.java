@@ -14,6 +14,7 @@ import lombok.Data;
 @Data
 @TableName("smoke")
 public class SmokeEntity {
+    //年
     //主键
     @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
