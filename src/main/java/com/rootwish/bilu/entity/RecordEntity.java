@@ -9,21 +9,16 @@ import lombok.Data;
  * 类的描述
  *
  * @author SZJ
- * @date 2019/12/10
+ * @date 2019/12/13
  */
 @Data
-@TableName("smoke")
-public class SmokeEntity {
-    //年
-    //主键
+@TableName("record")
+public class RecordEntity {
+    //id
     @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
-    //烟名
-    private String smokeName;
-    //条数
-    private String packOFNumber;
-    //售价(条)
-    private String retailPrice;
     //基本信息id
     private Integer informationId;
+    //笔录内容
+    private String record;
 }

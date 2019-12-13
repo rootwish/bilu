@@ -41,10 +41,10 @@ public class InformationEntity {
     private String buckleSingleNumber;
     //案件编号
     private String theCaseNumber;
-    //证据处理通知书   乐烟存处[2018]第73-1号   乐 2018  两项为输入框 套用到后面文件 数字73为第九点案件编号
-    private String placeOfDomicile;
-    //2018
-    private String adviceNoteValue;
+    //证据处理通知书   乐烟存处[2018]第73-1号   乐
+    private String le;
+    //证据处理通知书   乐烟存处[2018]第73-1号   2018
+    private String year;
     //分类id
     private String classificationId;
 }

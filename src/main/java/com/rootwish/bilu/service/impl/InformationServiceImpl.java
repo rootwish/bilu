@@ -32,8 +32,8 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
     @Override
     public boolean saveInformation(InformationModel informationModel) {
         InformationEntity informationEntity = new InformationEntity();
-        informationEntity.setSeized_time(informationModel.getSeized_time());
-        informationEntity.setStart_time(informationModel.getStart_time());
+        informationEntity.setSeizedTime(informationModel.getSeizedTime());
+        informationEntity.setStartTime(informationModel.getStartTime());
         informationEntity.setSite(informationModel.getSite());
         informationEntity.setCertificateType(informationModel.getCertificateType());
         informationEntity.setCertificateNumber(informationModel.getCertificateNumber());
@@ -44,8 +44,8 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
         informationEntity.setTheRealAddress(informationModel.getTheRealAddress());
         informationEntity.setBuckleSingleNumber(informationModel.getBuckleSingleNumber());
         informationEntity.setTheCaseNumber(informationModel.getTheCaseNumber());
-        informationEntity.setPlaceOfDomicile(informationModel.getPlaceOfDomicile());
-        informationEntity.setAdviceNoteValue(informationModel.getAdviceNoteValue());
+        informationEntity.setLe(informationModel.getLe());
+        informationEntity.setYear(informationModel.getYear());
         informationEntity.setClassificationId(informationModel.getClassificationId());
         boolean rel = true;
         int informationid = informationMapper.insert(informationEntity);
@@ -74,8 +74,8 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
         for (int i = 0;i<informationEntities.size();i++){
             InformationModel informationModel = new InformationModel();
             informationModel.setId(informationEntities.get(i).getId());
-            informationModel.setSeized_time(informationEntities.get(i).getSeized_time());
-            informationModel.setStart_time(informationEntities.get(i).getStart_time());
+            informationModel.setSeizedTime(informationEntities.get(i).getSeizedTime());
+            informationModel.setStartTime(informationEntities.get(i).getStartTime());
             informationModel.setSite(informationEntities.get(i).getSite());
             informationModel.setCertificateType(informationEntities.get(i).getCertificateType());
             informationModel.setCertificateNumber(informationEntities.get(i).getCertificateNumber());
@@ -86,8 +86,8 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
             informationModel.setTheRealAddress(informationEntities.get(i).getTheRealAddress());
             informationModel.setBuckleSingleNumber(informationEntities.get(i).getBuckleSingleNumber());
             informationModel.setTheCaseNumber(informationEntities.get(i).getTheCaseNumber());
-            informationModel.setPlaceOfDomicile(informationEntities.get(i).getPlaceOfDomicile());
-            informationModel.setAdviceNoteValue(informationEntities.get(i).getAdviceNoteValue());
+            informationModel.setLe(informationEntities.get(i).getLe());
+            informationModel.setYear(informationEntities.get(i).getYear());
             informationModel.setClassificationId(informationEntities.get(i).getClassificationId());
             QueryWrapper<SmokeEntity> smokeWrapper = new QueryWrapper<>();
             smokeWrapper.eq("information_id",informationEntities.get(i).getId());
@@ -103,8 +103,8 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
         InformationEntity informationEntity = informationMapper.selectById(id);
         InformationModel informationModel = new InformationModel();
         informationModel.setId(informationEntity.getId());
-        informationModel.setSeized_time(informationEntity.getSeized_time());
-        informationModel.setStart_time(informationEntity.getStart_time());
+        informationModel.setSeizedTime(informationEntity.getSeizedTime());
+        informationModel.setStartTime(informationEntity.getStartTime());
         informationModel.setSite(informationEntity.getSite());
         informationModel.setCertificateType(informationEntity.getCertificateType());
         informationModel.setCertificateNumber(informationEntity.getCertificateNumber());
@@ -115,8 +115,8 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
         informationModel.setTheRealAddress(informationEntity.getTheRealAddress());
         informationModel.setBuckleSingleNumber(informationEntity.getBuckleSingleNumber());
         informationModel.setTheCaseNumber(informationEntity.getTheCaseNumber());
-        informationModel.setPlaceOfDomicile(informationEntity.getPlaceOfDomicile());
-        informationModel.setAdviceNoteValue(informationEntity.getAdviceNoteValue());
+        informationModel.setLe(informationEntity.getLe());
+        informationModel.setYear(informationEntity.getYear());
         informationModel.setClassificationId(informationEntity.getClassificationId());
         QueryWrapper<SmokeEntity> smokeWrapper = new QueryWrapper<>();
         smokeWrapper.eq("information_id",informationEntity.getId());
@@ -129,8 +129,8 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
     public void updateInformation(InformationModel informationModel) {
         InformationEntity informationEntity = new InformationEntity();
         informationEntity.setId(informationModel.getId());
-        informationEntity.setSeized_time(informationModel.getSeized_time());
-        informationEntity.setStart_time(informationModel.getStart_time());
+        informationEntity.setSeizedTime(informationModel.getSeizedTime());
+        informationEntity.setStartTime(informationModel.getStartTime());
         informationEntity.setSite(informationModel.getSite());
         informationEntity.setCertificateType(informationModel.getCertificateType());
         informationEntity.setCertificateNumber(informationModel.getCertificateNumber());
@@ -141,8 +141,8 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
         informationEntity.setTheRealAddress(informationModel.getTheRealAddress());
         informationEntity.setBuckleSingleNumber(informationModel.getBuckleSingleNumber());
         informationEntity.setTheCaseNumber(informationModel.getTheCaseNumber());
-        informationEntity.setPlaceOfDomicile(informationModel.getPlaceOfDomicile());
-        informationEntity.setAdviceNoteValue(informationModel.getAdviceNoteValue());
+        informationEntity.setLe(informationModel.getLe());
+        informationEntity.setYear(informationModel.getYear());
         informationEntity.setClassificationId(informationModel.getClassificationId());
             int information = informationMapper.updateById(informationEntity);
             List<SmokeEntity> smoke = informationModel.getSmoke();
