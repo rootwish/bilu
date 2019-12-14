@@ -10,4 +10,5 @@ import com.rootwish.bilu.model.InformationModel;
  */
 public interface FreeMarkerWordService {
     void exporMillCertificateWord(InformationModel informationModel);
+    void FreeMarkerWord();
 }

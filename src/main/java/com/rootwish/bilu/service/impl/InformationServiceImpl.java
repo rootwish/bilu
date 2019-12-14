@@ -40,6 +40,7 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
         informationEntity.setPhoneNumber(informationModel.getPhoneNumber());
         informationEntity.setAge(informationModel.getAge());
         informationEntity.setSex(informationModel.getSex());
+        informationEntity.setHouseholdAddress(informationModel.getHouseholdAddress());
         informationEntity.setTobaccoNumber(informationModel.getTobaccoNumber());
         informationEntity.setTheRealAddress(informationModel.getTheRealAddress());
         informationEntity.setBuckleSingleNumber(informationModel.getBuckleSingleNumber());
@@ -47,6 +48,7 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
         informationEntity.setLe(informationModel.getLe());
         informationEntity.setYear(informationModel.getYear());
         informationEntity.setClassificationId(informationModel.getClassificationId());
+        informationEntity.setName(informationModel.getName());
         boolean rel = true;
         int informationid = informationMapper.insert(informationEntity);
         if (0>=informationid){
@@ -56,6 +58,10 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
         for (int i =0;i<smoke.size();i++){
             SmokeEntity smokeEntity = smoke.get(i);
             smokeEntity.setInformationId(informationid);
+            String packOFNumber = smokeEntity.getPackOFNumber();
+            String retailPrice = smokeEntity.getRetailPrice();
+            int numberTotalPrice = Integer.parseInt(packOFNumber)+Integer.parseInt(retailPrice);
+            smokeEntity.setNumberTotalPrice(numberTotalPrice+"");
             int smokeid = smokeMapper.insert(smokeEntity);
             if (0>=smokeid){
                 rel = false;
@@ -82,6 +88,7 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
             informationModel.setPhoneNumber(informationEntities.get(i).getPhoneNumber());
             informationModel.setAge(informationEntities.get(i).getAge());
             informationModel.setSex(informationEntities.get(i).getSex());
+            informationModel.setHouseholdAddress(informationEntities.get(i).getHouseholdAddress());
             informationModel.setTobaccoNumber(informationEntities.get(i).getTobaccoNumber());
             informationModel.setTheRealAddress(informationEntities.get(i).getTheRealAddress());
             informationModel.setBuckleSingleNumber(informationEntities.get(i).getBuckleSingleNumber());
@@ -89,6 +96,7 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
             informationModel.setLe(informationEntities.get(i).getLe());
             informationModel.setYear(informationEntities.get(i).getYear());
             informationModel.setClassificationId(informationEntities.get(i).getClassificationId());
+            informationModel.setName(informationEntities.get(i).getName());
             QueryWrapper<SmokeEntity> smokeWrapper = new QueryWrapper<>();
             smokeWrapper.eq("information_id",informationEntities.get(i).getId());
             List<SmokeEntity> smokeEntities = smokeMapper.selectList(smokeWrapper);
@@ -111,6 +119,7 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
         informationModel.setPhoneNumber(informationEntity.getPhoneNumber());
         informationModel.setAge(informationEntity.getAge());
         informationModel.setSex(informationEntity.getSex());
+        informationModel.setHouseholdAddress(informationEntity.getHouseholdAddress());
         informationModel.setTobaccoNumber(informationEntity.getTobaccoNumber());
         informationModel.setTheRealAddress(informationEntity.getTheRealAddress());
         informationModel.setBuckleSingleNumber(informationEntity.getBuckleSingleNumber());
@@ -118,6 +127,7 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
         informationModel.setLe(informationEntity.getLe());
         informationModel.setYear(informationEntity.getYear());
         informationModel.setClassificationId(informationEntity.getClassificationId());
+        informationModel.setName(informationEntity.getName());
         QueryWrapper<SmokeEntity> smokeWrapper = new QueryWrapper<>();
         smokeWrapper.eq("information_id",informationEntity.getId());
         List<SmokeEntity> smokeEntities = smokeMapper.selectList(smokeWrapper);
@@ -137,6 +147,7 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
         informationEntity.setPhoneNumber(informationModel.getPhoneNumber());
         informationEntity.setAge(informationModel.getAge());
         informationEntity.setSex(informationModel.getSex());
+        informationEntity.setHouseholdAddress(informationModel.getHouseholdAddress());
         informationEntity.setTobaccoNumber(informationModel.getTobaccoNumber());
         informationEntity.setTheRealAddress(informationModel.getTheRealAddress());
         informationEntity.setBuckleSingleNumber(informationModel.getBuckleSingleNumber());
@@ -144,6 +155,7 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
         informationEntity.setLe(informationModel.getLe());
         informationEntity.setYear(informationModel.getYear());
         informationEntity.setClassificationId(informationModel.getClassificationId());
+        informationEntity.setName(informationModel.getName());
             int information = informationMapper.updateById(informationEntity);
             List<SmokeEntity> smoke = informationModel.getSmoke();
             for (int i = 0;i<smoke.size();i++ ){

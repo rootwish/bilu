@@ -34,10 +34,10 @@ public class InformationEntity {
     //性别
     private String sex;
     //户籍住址
-    private String tobaccoNumber;
+    private String householdAddress;
     //实际住址
     private String theRealAddress;
-    //烟草证号
+    //扣单编号
     private String buckleSingleNumber;
     //案件编号
     private String theCaseNumber;
@@ -46,5 +46,10 @@ public class InformationEntity {
     //证据处理通知书   乐烟存处[2018]第73-1号   2018
     private String year;
     //分类id
-    private String classificationId;
+    private Integer classificationId;
+    //烟草证号
+    private String tobaccoNumber;
+    //姓名
+    private String name;
+
 }

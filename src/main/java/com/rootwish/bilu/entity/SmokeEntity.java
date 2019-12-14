@@ -26,4 +26,14 @@ public class SmokeEntity {
     private String retailPrice;
     //基本信息id
     private Integer informationId;
+    //合计价格
+    private String numberTotalPrice;
+    //包装形式
+    private String packageStyle;
+    //样品基数（条）
+    private String sampleBase;
+    //抽样数量
+    private String amplingNumber;
+    //条包条形码
+    private String tiaoBaoBarCode;
 }
