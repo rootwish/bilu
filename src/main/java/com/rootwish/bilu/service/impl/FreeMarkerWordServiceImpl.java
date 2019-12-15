@@ -45,6 +45,8 @@ public class FreeMarkerWordServiceImpl implements FreeMarkerWordService {
     @Override
     public void exporMillCertificateWord(InformationModel informationModel){
         List<String> list = new ArrayList<>();
+        list.add("证据先行登记保存批准书.ftl");
+        list.add("先行登记保存证据处理通知书.ftl");
         list.add("送 达 回 证.ftl");
         list.add("涉案专卖品价格证明申请表（新）样板.ftl");
         list.add("乐昌市烟草专卖局201年39号案有关情况汇报.ftl");
@@ -90,42 +92,52 @@ public class FreeMarkerWordServiceImpl implements FreeMarkerWordService {
                 legalCaseSmoke.append("。共计"+smokeList.size()+"个品种");
             }
         }
+        //品种数量
+        map.put("smokeSize",smokeList.size());
         //所有品种烟总条数
         map.put("totalNumber",totalNumber);
         //所有品种烟总价格
         map.put("totalPrice",totalPrice);
+        map.put("wan",totalNumber*0.02);
         legalCaseSmoke.append(totalNumber+"条("+(totalNumber*0.02)+"万支)");
         //案件摘要
         map.put("legalCaseSmoke",legalCaseSmoke);
-        try {
-        //根据文件名在模板文件夹路径中找到模板
-        Template freemarkerTemplate = configuration.getTemplate(list.get(0));
+        for (String fileName : list) {
+            try {
+                //根据文件名在模板文件夹路径中找到模板
+                Template freemarkerTemplate = configuration.getTemplate(fileName);
+                //导出的文件.doc
+                //String newTitle = (System.getProperty("user.dir")+"\\workDoc\\"+list.get(0)).substring(0,(System.getProperty("user.dir")+"\\workDoc\\"+list.get(0)).length()-1);
+                String newTitle = (System.getProperty("user.dir")+"\\workDoc\\"+fileName).substring(0,(System.getProperty("user.dir")+"\\workDoc\\"+fileName).length()-1);
 
-        //导出的文件.doc
-        String newTitle = (System.getProperty("user.dir")+"\\workDoc\\"+list.get(0)).substring(0,(System.getProperty("user.dir")+"\\workDoc\\"+list.get(0)).length()-1);
+                if ("涉案专卖品价格证明申请表（新）样板.ftl".equals(fileName)){
+                    newTitle = newTitle.replace(".ft", ".xls");
+                }else {
+                    newTitle = newTitle.replace(".ft", ".doc");
+                }
+                //根据模板生成临时文件
+                file = createDoc(map,freemarkerTemplate);
+                //读取生成的文件
+                fin = new FileInputStream(file);
+                int tempByte;
+                byte[] buffer = new byte[512];//缓冲区
 
-            //根据模板生成临时文件
-            file = createDoc(map,freemarkerTemplate);
-            //读取生成的文件
-            fin = new FileInputStream(file);
-            int tempByte;
-            byte[] buffer = new byte[512];//缓冲区
+                fos = new FileOutputStream(newTitle);
 
-            fos = new FileOutputStream(newTitle);
-
-            //将读取的内容放到缓冲区并且写到新文件中去
-            while((tempByte = fin.read(buffer))!=-1){
-                fos.write(buffer,0,tempByte);//数组，开始位置，长度
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        } finally {
-            try{
-                if(fin != null) fin.close();
-                if(fos != null) fos.close();
-                if(file != null) file.delete(); // 删除临时文件
+                //将读取的内容放到缓冲区并且写到新文件中去
+                while((tempByte = fin.read(buffer))!=-1){
+                    fos.write(buffer,0,tempByte);//数组，开始位置，长度
+                }
             }catch (Exception e){
                 e.printStackTrace();
+            } finally {
+                try{
+                    if(fin != null) fin.close();
+                    if(fos != null) fos.close();
+                    if(file != null) file.delete(); // 删除临时文件
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
             }
         }
     }

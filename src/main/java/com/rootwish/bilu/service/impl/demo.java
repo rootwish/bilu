@@ -25,8 +25,8 @@ public class demo {
         informationModel.setPhoneNumber("13567803454");
         informationModel.setAge("45");
         informationModel.setSex("男");
-        informationModel.setHouseholdAddress("青山秋林");
-        informationModel.setTheRealAddress("维也纳");
+        informationModel.setHouseholdAddress("地球的某一个角落");
+        informationModel.setTheRealAddress("角落里的角落");
         informationModel.setBuckleSingleNumber("扣单编号");
         informationModel.setTheCaseNumber("79");
         List<SmokeEntity> smokeEntityList = new ArrayList<>();
