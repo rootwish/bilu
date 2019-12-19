@@ -562,7 +562,7 @@
                         <w:u w:val="single"/>
                         <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                     </w:rPr>
-                    <w:t>${name}</w:t>
+                    <w:t>${name!''}</w:t>
                 </w:r>
                 <w:r>
                     <w:rPr>
@@ -911,7 +911,7 @@
                                     <w:sz w:val="24"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${smoke.smokeName}</w:t>
+                                <w:t>${smoke.smokeName!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>
@@ -969,7 +969,7 @@
                                     <w:sz-cs w:val="30"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${smoke.packOFNumber}</w:t>
+                                <w:t>${smoke.packOFNumber!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>
@@ -1367,7 +1367,7 @@
                                     <w:sz-cs w:val="30"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${smokeSize}</w:t>
+                                <w:t>${smokeSize!''}</w:t>
                             </w:r>
                             <w:r>
                                 <w:rPr>
@@ -1408,7 +1408,7 @@
                                     <w:sz w:val="24"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${totalNumber}</w:t>
+                                <w:t>${totalNumber!''}</w:t>
                             </w:r>
                             <w:r>
                                 <w:rPr>
@@ -1425,7 +1425,7 @@
                                     <w:sz w:val="24"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${wan}</w:t>
+                                <w:t>${wan!''}</w:t>
                             </w:r>
                             <w:r>
                                 <w:rPr>

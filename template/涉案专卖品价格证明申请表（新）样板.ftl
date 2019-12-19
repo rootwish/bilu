@@ -568,7 +568,7 @@
                     <Data ss:Type="String">案件名称</Data>
                 </Cell>
                 <Cell ss:StyleID="s76" ss:MergeAcross="1">
-                    <Data ss:Type="String">${name}无烟草专卖品准运证运输卷烟</Data>
+                    <Data ss:Type="String">${name!''}无烟草专卖品准运证运输卷烟</Data>
                 </Cell>
                 <Cell ss:StyleID="s53">
                     <Data ss:Type="String">案件号</Data>
@@ -576,9 +576,9 @@
                 <Cell ss:StyleID="s77" ss:MergeAcross="2">
                     <ss:Data ss:Type="String"
                         xmlns="http://www.w3.org/TR/REC-html40">
-                        <Font html:Color="#000000">${le}</Font>烟立[
-                        <Font html:Color="#000000">${year}</Font>]第
-                        <Font html:Color="#000000">${theCaseNumber}</Font>号
+                        <Font html:Color="#000000">${le!''}</Font>烟立[
+                        <Font html:Color="#000000">${year!''}</Font>]第
+                        <Font html:Color="#000000">${theCaseNumber!''}</Font>号
                     </ss:Data>
                 </Cell>
             </Row>
@@ -588,7 +588,7 @@
                 </Cell>
                 <Cell ss:StyleID="s78" ss:MergeAcross="6">
                     <ss:Data ss:Type="String"
-                        xmlns="http://www.w3.org/TR/REC-html40">    2019年10月30日10时45分，根据群众举报，我局专卖执法人员会同乐昌市公安局民警，经出示证件、表明身份，依法对一辆停在广东省乐昌市坪石镇老坪石京港澳高速粤北服务区车牌号为粤S5K5H2的小型轿车进行检查，在该车上查获涉嫌无烟草专卖品准运证运输的卷烟${legalCaseSmoke}。经现场询问，当事人罗征辉（司机）是通过驾驶车牌号为粤S5K5H2的小型轿车将该批卷烟从湖南省郴州市运至湖南省郴州市宜章县一六镇的，当事人罗征辉（司机）承认货主就是自己本人，且现场无法提供烟草专卖品准运证和其他合法有效手续随货同行。当事人该行为涉嫌违反了《中华人民共和国烟草专卖法》第二十一条的规定。为了案件的进一步调查取证，经报局领导同意批准后，我局专卖执法人员依法将涉案卷烟作证据予以先行登记保存（广东省乐昌市烟草专卖局证据先行登记保存通知书编号：
+                        xmlns="http://www.w3.org/TR/REC-html40">    2019年10月30日10时45分，根据群众举报，我局专卖执法人员会同乐昌市公安局民警，经出示证件、表明身份，依法对一辆停在广东省乐昌市坪石镇老坪石京港澳高速粤北服务区车牌号为粤S5K5H2的小型轿车进行检查，在该车上查获涉嫌无烟草专卖品准运证运输的卷烟${legalCaseSmoke!''}。经现场询问，当事人罗征辉（司机）是通过驾驶车牌号为粤S5K5H2的小型轿车将该批卷烟从湖南省郴州市运至湖南省郴州市宜章县一六镇的，当事人罗征辉（司机）承认货主就是自己本人，且现场无法提供烟草专卖品准运证和其他合法有效手续随货同行。当事人该行为涉嫌违反了《中华人民共和国烟草专卖法》第二十一条的规定。为了案件的进一步调查取证，经报局领导同意批准后，我局专卖执法人员依法将涉案卷烟作证据予以先行登记保存（广东省乐昌市烟草专卖局证据先行登记保存通知书编号：
                         <Font html:Color="#FF0000">44F1604749</Font>）。
                     </ss:Data>
                 </Cell>
@@ -622,25 +622,25 @@
 			<#list smokeList as smoke>
             <Row ss:StyleID="s50" ss:Height="30">
                 <Cell ss:StyleID="s60">
-                    <Data ss:Type="String">${smoke_index+1}</Data>
+                    <Data ss:Type="String">${smoke_index+1!''}</Data>
                 </Cell>
                 <Cell ss:StyleID="s61">
-                    <Data ss:Type="String">${smoke.tiaoBaoBarCode}</Data>
+                    <Data ss:Type="String">${smoke.tiaoBaoBarCode!''}</Data>
                 </Cell>
                 <Cell ss:StyleID="s62">
-                    <Data ss:Type="String">${smoke.smokeName}</Data>
+                    <Data ss:Type="String">${smoke.smokeName!''}</Data>
                 </Cell>
                 <Cell ss:StyleID="s62">
-                    <Data ss:Type="String">${smoke.packOFNumber}</Data>
+                    <Data ss:Type="String">${smoke.packOFNumber!''}</Data>
                 </Cell>
                 <Cell ss:StyleID="s62">
-                    <Data ss:Type="String">${smoke.retailPrice}</Data>
+                    <Data ss:Type="String">${smoke.retailPrice!''}</Data>
                 </Cell>
                 <Cell ss:StyleID="s63">
                     <Data ss:Type="String">元/条</Data>
                 </Cell>
                 <Cell ss:StyleID="s62">
-                    <Data ss:Type="String">${smoke.numberTotalPrice}</Data>
+                    <Data ss:Type="String">${smoke.numberTotalPrice!''}</Data>
                 </Cell>
                 <Cell ss:StyleID="s56"/>
             </Row>

@@ -56,6 +56,7 @@ public class FreeMarkerWordServiceImpl implements FreeMarkerWordService {
         list.add("（新）立案报告表.ftl");
         list.add("(新)抽样取证物品清单.ftl");
         list.add("(2018)打印2份（新）涉案烟草专卖品核价表.ftl");
+        list.add("询问笔录.ftl");
         File file = null;
         InputStream fin = null;
         FileOutputStream fos = null;
@@ -71,6 +72,8 @@ public class FreeMarkerWordServiceImpl implements FreeMarkerWordService {
         List<SmokeEntity> smokeList = informationModel.getSmoke();
         map.put("smokeList",smokeList);
         map.put("name",informationModel.getName());
+        map.put("sex",informationModel.getSex());
+        map.put("phone",informationModel.getPhoneNumber());
         //证件类型
         map.put("certificateType",informationModel.getCertificateType());
         //证件编号
@@ -79,12 +82,13 @@ public class FreeMarkerWordServiceImpl implements FreeMarkerWordService {
         map.put("householdAddress",informationModel.getHouseholdAddress());
         //笔录时间
         map.put("startTime",informationModel.getStartTime());
+        map.put("record",informationModel.getRecord());
         int totalNumber = 0;
-        int totalPrice = 0;
+        Double totalPrice = 0.0;
         StringBuilder legalCaseSmoke = new StringBuilder();
         for (int i = 0;i<smokeList.size();i++){
             totalNumber+=Integer.parseInt(smokeList.get(i).getPackOFNumber());
-            totalPrice+=Integer.parseInt(smokeList.get(i).getNumberTotalPrice());
+            totalPrice+=Double.valueOf(smokeList.get(i).getNumberTotalPrice());
             legalCaseSmoke.append(smokeList.get(i).getSmokeName());
             if (i<(smokeList.size()-1)){
                 legalCaseSmoke.append(",");
@@ -97,7 +101,7 @@ public class FreeMarkerWordServiceImpl implements FreeMarkerWordService {
         //所有品种烟总条数
         map.put("totalNumber",totalNumber);
         //所有品种烟总价格
-        map.put("totalPrice",totalPrice);
+        map.put("totalPrice",totalPrice.toString());
         map.put("wan",totalNumber*0.02);
         legalCaseSmoke.append(totalNumber+"条("+(totalNumber*0.02)+"万支)");
         //案件摘要

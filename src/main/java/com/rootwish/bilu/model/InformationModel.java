@@ -55,4 +55,6 @@ public class InformationModel {
     private String name;
     //包装形式
     private String packageStyle;
+    //包装形式
+    private List record;
 }
