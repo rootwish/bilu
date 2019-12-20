@@ -33,7 +33,7 @@ public class demo {
         SmokeEntity smokeEntity = new SmokeEntity();
         smokeEntity.setId(1);
         smokeEntity.setSmokeName("红双喜（软）");
-        smokeEntity.setPackOFNumber("100");
+        smokeEntity  .setPackOfNumber("100");
         smokeEntity.setRetailPrice("60");
         smokeEntity.setInformationId(1);
         smokeEntity.setNumberTotalPrice("6000");
@@ -44,7 +44,7 @@ public class demo {
         SmokeEntity smokeEntity2 = new SmokeEntity();
         smokeEntity2.setId(2);
         smokeEntity2.setSmokeName("经典（软）");
-        smokeEntity2.setPackOFNumber("100");
+        smokeEntity2.setPackOfNumber("100");
         smokeEntity2.setRetailPrice("100");
         smokeEntity2.setInformationId(1);
         smokeEntity2.setNumberTotalPrice("10000");

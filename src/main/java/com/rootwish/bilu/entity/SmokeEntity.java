@@ -21,7 +21,7 @@ public class SmokeEntity {
     //烟名
     private String smokeName;
     //条数
-    private String packOFNumber;
+    private String packOfNumber;
     //售价(条)
     private String retailPrice;
     //基本信息id

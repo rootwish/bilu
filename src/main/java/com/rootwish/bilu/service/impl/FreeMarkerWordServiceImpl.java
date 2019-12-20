@@ -87,7 +87,7 @@ public class FreeMarkerWordServiceImpl implements FreeMarkerWordService {
         Double totalPrice = 0.0;
         StringBuilder legalCaseSmoke = new StringBuilder();
         for (int i = 0;i<smokeList.size();i++){
-            totalNumber+=Integer.parseInt(smokeList.get(i).getPackOFNumber());
+            totalNumber+=Integer.parseInt(smokeList.get(i).getPackOfNumber());
             totalPrice+=Double.valueOf(smokeList.get(i).getNumberTotalPrice());
             legalCaseSmoke.append(smokeList.get(i).getSmokeName());
             if (i<(smokeList.size()-1)){
@@ -102,6 +102,7 @@ public class FreeMarkerWordServiceImpl implements FreeMarkerWordService {
         map.put("totalNumber",totalNumber);
         //所有品种烟总价格
         map.put("totalPrice",totalPrice.toString());
+        //xx万支
         map.put("wan",totalNumber*0.02);
         legalCaseSmoke.append(totalNumber+"条("+(totalNumber*0.02)+"万支)");
         //案件摘要

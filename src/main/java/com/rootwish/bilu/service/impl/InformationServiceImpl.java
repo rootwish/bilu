@@ -57,8 +57,8 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
         List<SmokeEntity> smoke = informationModel.getSmoke();
         for (int i =0;i<smoke.size();i++){
             SmokeEntity smokeEntity = smoke.get(i);
-            smokeEntity.setInformationId(informationid);
-            String packOFNumber = smokeEntity.getPackOFNumber();
+            smokeEntity.setInformationId(informationEntity.getId());
+            String packOFNumber = smokeEntity.getPackOfNumber();
             String retailPrice = smokeEntity.getRetailPrice();
             int numberTotalPrice = Integer.parseInt(packOFNumber)+Integer.parseInt(retailPrice);
             smokeEntity.setNumberTotalPrice(numberTotalPrice+"");
@@ -67,7 +67,6 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
                 rel = false;
             }
         }
-
         return rel;
     }
 

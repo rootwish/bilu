@@ -53,8 +53,6 @@ public class InformationModel {
     private String tobaccoNumber;
     //姓名
     private String name;
-    //包装形式
-    private String packageStyle;
-    //包装形式
+    //笔录
     private List record;
 }

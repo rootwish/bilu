@@ -3,6 +3,7 @@ package com.rootwish.bilu.controller;
 import com.rootwish.bilu.entity.SmokeEntity;
 import com.rootwish.bilu.model.InformationModel;
 import com.rootwish.bilu.model.Smoke;
+import com.rootwish.bilu.service.InformationService;
 import com.rootwish.bilu.service.impl.FreeMarkerWordServiceImpl;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.collections.FXCollections;
@@ -13,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.web.HTMLEditor;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -56,6 +58,9 @@ public class TreeViewController implements Initializable {
 
     @FXML
     private HTMLEditor htmlEditor;
+
+    @Autowired
+    private InformationService informationService;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -134,7 +139,7 @@ public class TreeViewController implements Initializable {
             List<Smoke> list = tableView.getItems();
             for(Smoke s:list) {
                 smokeEntity.setSmokeName(s.getType());
-                smokeEntity.setPackOFNumber(s.getNum());
+                smokeEntity.setPackOfNumber(s.getNum());
                 smokeEntity.setRetailPrice(s.getPrice());
                 smokeEntity.setInformationId(1);
                 smokeEntity.setNumberTotalPrice(String.valueOf(Double.valueOf(s.getNum())*Double.valueOf(s.getPrice())));
@@ -150,7 +155,8 @@ public class TreeViewController implements Initializable {
             informationModel.setClassificationId(1);
             informationModel.setTobaccoNumber("11111111111111111");
             freeMarkerWordService.exporMillCertificateWord(informationModel);
-
+            boolean b = informationService.saveInformation(informationModel);
+            System.out.println(b);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("保存成功！");
             alert.setHeaderText("保存文档于程序目录workDoc下");
