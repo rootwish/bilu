@@ -578,7 +578,7 @@
                         <w:sz-cs w:val="28"/>
                         <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                     </w:rPr>
-                    <w:t>${seizedTime}</w:t>
+                    <w:t>${seizedTime!''}</w:t>
                 </w:r>
                 <w:r>
                     <w:rPr>
@@ -880,7 +880,7 @@
                                     <w:sz-cs w:val="21"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${smoke.smokeName}</w:t>
+                                <w:t>${smoke.smokeName!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>
@@ -908,7 +908,7 @@
                                     <w:sz-cs w:val="21"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${smoke.packOFNumber}</w:t>
+                                <w:t>${smoke.packOFNumber!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>
@@ -937,7 +937,7 @@
                                     <w:sz-cs w:val="21"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${smoke.retailPrice}</w:t>
+                                <w:t>${smoke.retailPrice!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>
@@ -965,7 +965,7 @@
                                     <w:sz-cs w:val="21"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${smoke.numberTotalPrice}</w:t>
+                                <w:t>${smoke.numberTotalPrice!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>
@@ -1862,7 +1862,7 @@
                                     <w:sz-cs w:val="21"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${totalNumber}</w:t>
+                                <w:t>${totalNumber!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>
@@ -1910,7 +1910,7 @@
                                     <w:sz-cs w:val="21"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${totalPrice}</w:t>
+                                <w:t>${totalPrice!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>
@@ -1958,7 +1958,7 @@
                         <w:sz-cs w:val="28"/>
                         <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                     </w:rPr>
-                    <w:t>${le}</w:t>
+                    <w:t>${le!''}</w:t>
                 </w:r>
                 <w:r>
                     <w:rPr>
@@ -1975,7 +1975,7 @@
                         <w:sz-cs w:val="28"/>
                         <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                     </w:rPr>
-                    <w:t>${year}</w:t>
+                    <w:t>${year!''}</w:t>
                 </w:r>
                 <w:r>
                     <w:rPr>
@@ -1992,7 +1992,7 @@
                         <w:sz-cs w:val="28"/>
                         <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                     </w:rPr>
-                    <w:t>${theCaseNumber}</w:t>
+                    <w:t>${theCaseNumber!''}</w:t>
                 </w:r>
                 <w:r>
                     <w:rPr>

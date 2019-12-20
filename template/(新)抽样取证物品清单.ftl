@@ -660,7 +660,7 @@
                                     <w:sz w:val="24"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${name}</w:t>
+                                <w:t>${name!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>
@@ -712,7 +712,7 @@
                                     <w:sz w:val="24"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${le}</w:t>
+                                <w:t>${le!''}</w:t>
                             </w:r>
                             <w:r>
                                 <w:rPr>
@@ -728,7 +728,7 @@
                                     <w:sz-cs w:val="28"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${year}</w:t>
+                                <w:t>${year!''}</w:t>
                             </w:r>
                             <w:r>
                                 <w:rPr>
@@ -744,7 +744,7 @@
                                     <w:sz-cs w:val="28"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${theCaseNumber}</w:t>
+                                <w:t>${theCaseNumber!''}</w:t>
                             </w:r>
                             <w:r>
                                 <w:rPr>
@@ -1155,7 +1155,7 @@
                                     <w:sz w:val="24"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${smoke.smokeName}</w:t>
+                                <w:t>${smoke.smokeName!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>
@@ -1184,7 +1184,7 @@
                                     <w:sz w:val="24"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${smoke.packageStyle}</w:t>
+                                <w:t>${smoke.packageStyle!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>
@@ -1212,7 +1212,7 @@
                                     <w:sz w:val="24"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${smoke.sampleBase}</w:t>
+                                <w:t>${smoke.sampleBase!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>
@@ -1241,7 +1241,7 @@
                                     <w:sz w:val="24"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${smoke.amplingNumber}</w:t>
+                                <w:t>${smoke.amplingNumber!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>
@@ -2634,7 +2634,7 @@
                                     <w:sz w:val="24"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${name}</w:t>
+                                <w:t>${name!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>
@@ -2686,7 +2686,7 @@
                                     <w:sz w:val="24"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${le}</w:t>
+                                <w:t>${le!''}</w:t>
                             </w:r>
                             <w:r>
                                 <w:rPr>
@@ -2702,7 +2702,7 @@
                                     <w:sz-cs w:val="28"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${year}</w:t>
+                                <w:t>${year!''}</w:t>
                             </w:r>
                             <w:r>
                                 <w:rPr>
@@ -2718,7 +2718,7 @@
                                     <w:sz-cs w:val="28"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${theCaseNumber}</w:t>
+                                <w:t>${theCaseNumber!''}</w:t>
                             </w:r>
                             <w:r>
                                 <w:rPr>
@@ -3127,7 +3127,7 @@
                                     <w:sz w:val="24"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${smoke.smokeName}</w:t>
+                                <w:t>${smoke.smokeName!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>
@@ -3154,7 +3154,7 @@
                                     <w:sz w:val="24"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${smoke.packageStyle}</w:t>
+                                <w:t>${smoke.packageStyle!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>
@@ -3180,7 +3180,7 @@
                                     <w:sz w:val="24"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${smoke.sampleBase}</w:t>
+                                <w:t>${smoke.sampleBase!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>
@@ -3207,7 +3207,7 @@
                                     <w:sz w:val="24"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${smoke.amplingNumber}</w:t>
+                                <w:t>${smoke.amplingNumber!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>
@@ -4586,7 +4586,7 @@
                                     <w:sz w:val="24"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${name}</w:t>
+                                <w:t>${name!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>
@@ -4638,7 +4638,7 @@
                                     <w:sz w:val="24"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${le}</w:t>
+                                <w:t>${le!''}</w:t>
                             </w:r>
                             <w:r>
                                 <w:rPr>
@@ -4654,7 +4654,7 @@
                                     <w:sz-cs w:val="28"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${year}</w:t>
+                                <w:t>${year!''}</w:t>
                             </w:r>
                             <w:r>
                                 <w:rPr>
@@ -4670,7 +4670,7 @@
                                     <w:sz-cs w:val="28"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${theCaseNumber}</w:t>
+                                <w:t>${theCaseNumber!''}</w:t>
                             </w:r>
                             <w:r>
                                 <w:rPr>
@@ -5079,7 +5079,7 @@
                                     <w:sz w:val="24"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${smoke.smokeName}</w:t>
+                                <w:t>${smoke.smokeName!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>
@@ -5106,7 +5106,7 @@
                                     <w:sz w:val="24"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${smoke.packageStyle}</w:t>
+                                <w:t>${smoke.packageStyle!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>
@@ -5132,7 +5132,7 @@
                                     <w:sz w:val="24"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${smoke.sampleBase}</w:t>
+                                <w:t>${smoke.sampleBase!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>
@@ -5159,7 +5159,7 @@
                                     <w:sz w:val="24"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${smoke.amplingNumber}</w:t>
+                                <w:t>${smoke.amplingNumber!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>
@@ -6549,7 +6549,7 @@
                                     <w:sz w:val="24"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${name}</w:t>
+                                <w:t>${name!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>
@@ -6601,7 +6601,7 @@
                                     <w:sz w:val="24"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${le}</w:t>
+                                <w:t>${le!''}</w:t>
                             </w:r>
                             <w:r>
                                 <w:rPr>
@@ -6617,7 +6617,7 @@
                                     <w:sz-cs w:val="28"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${year}</w:t>
+                                <w:t>${year!''}</w:t>
                             </w:r>
                             <w:r>
                                 <w:rPr>
@@ -6633,7 +6633,7 @@
                                     <w:sz-cs w:val="28"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${theCaseNumber}</w:t>
+                                <w:t>${theCaseNumber!''}</w:t>
                             </w:r>
                             <w:r>
                                 <w:rPr>
@@ -7042,7 +7042,7 @@
                                     <w:sz w:val="24"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${smoke.smokeName}</w:t>
+                                <w:t>${smoke.smokeName!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>
@@ -7069,7 +7069,7 @@
                                     <w:sz w:val="24"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${smoke.packageStyle}</w:t>
+                                <w:t>${smoke.packageStyle!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>
@@ -7095,7 +7095,7 @@
                                     <w:sz w:val="24"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${smoke.sampleBase}</w:t>
+                                <w:t>${smoke.sampleBase!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>
@@ -7122,7 +7122,7 @@
                                     <w:sz w:val="24"/>
                                     <w:lang w:val="EN-US" w:fareast="ZH-CN"/>
                                 </w:rPr>
-                                <w:t>${smoke.amplingNumber}</w:t>
+                                <w:t>${smoke.amplingNumber!''}</w:t>
                             </w:r>
                         </w:p>
                     </w:tc>

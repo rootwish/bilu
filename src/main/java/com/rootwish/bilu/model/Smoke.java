@@ -9,4 +9,5 @@ public class Smoke {
     private String type;
     private String num;
     private String price;
+    private String code;
 }
