@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.rootwish.bilu.controller.NavigationPageController">
+   <children>
+      <Button fx:id="addInfo" layoutX="106.0" layoutY="153.0" mnemonicParsing="false" text="新增" />
+      <Button fx:id="infoList" layoutX="257.0" layoutY="153.0" mnemonicParsing="false" text="我的案件" />
+      <Button fx:id="customRecord" layoutX="429.0" layoutY="153.0" mnemonicParsing="false" text="自定义模板" />
+   </children>
+</Pane>
