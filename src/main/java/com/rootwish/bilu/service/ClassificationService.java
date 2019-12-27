@@ -14,4 +14,5 @@ import java.util.List;
 public interface ClassificationService {
     List<ClassificationModel> getParentCategory();
     ClassificationModel getClassification(String classiofyName);
+    ClassificationModel getClassification(Integer id);
 }

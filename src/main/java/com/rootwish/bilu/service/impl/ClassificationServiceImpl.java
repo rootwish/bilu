@@ -68,4 +68,14 @@ public class ClassificationServiceImpl extends ServiceImpl<ClassificationMapper,
             return classificationModel;
     }
 
+    @Override
+    public ClassificationModel getClassification(Integer id) {
+        ClassificationEntity byId = this.getById(id);
+        ClassificationModel classificationModel = new ClassificationModel();
+        classificationModel.setId(byId.getId());
+        classificationModel.setClassifyName(byId.getClassifyName());
+        classificationModel.setPid(byId.getPid());
+        return classificationModel;
+    }
+
 }

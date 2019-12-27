@@ -164,7 +164,7 @@ public class TreeViewController implements Initializable {
             informationModel.setBuckleSingleNumber("扣单编号");
             informationModel.setTheCaseNumber(theCaseNumber.getText());
 
-            informationModel.setRecord(record.getText());
+            informationModel.setNote(record.getText());
 
             List<SmokeEntity> smokeEntityList = new ArrayList<>();
             SmokeEntity smokeEntity = new SmokeEntity();

@@ -57,4 +57,6 @@ public class InformationModel {
     private String record;
     //笔录
     private String note;
+    //分类名字
+    private String classificationName;
 }
