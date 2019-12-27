@@ -1,21 +1,27 @@
 package com.rootwish.bilu.controller;
 
+import com.rootwish.bilu.BiluApplication;
 import com.rootwish.bilu.entity.SmokeEntity;
 import com.rootwish.bilu.model.InformationModel;
 import com.rootwish.bilu.model.Smoke;
 import com.rootwish.bilu.service.InformationService;
 import com.rootwish.bilu.service.impl.FreeMarkerWordServiceImpl;
 import de.felixroske.jfxsupport.FXMLController;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.web.HTMLEditor;
+import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -157,7 +163,6 @@ public class TreeViewController implements Initializable {
             freeMarkerWordService.exporMillCertificateWord(informationModel);
             boolean b = informationService.saveInformation(informationModel);
             System.out.println(b);
-            informationService.getInformation();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("保存成功！");
             alert.setHeaderText("保存文档于程序目录workDoc下");
@@ -166,5 +171,18 @@ public class TreeViewController implements Initializable {
             alert.showAndWait();
         });
 
+    }
+
+    public void showStage() {
+        Stage secondWindow=new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/IndexView.fxml"));
+        Scene scene= null;
+        try {
+            scene = new Scene(loader.load(),500,500);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        secondWindow.setScene(scene);
+        secondWindow.showAndWait();
     }
 }

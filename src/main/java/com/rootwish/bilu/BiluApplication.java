@@ -1,9 +1,11 @@
 package com.rootwish.bilu;
 
+import com.rootwish.bilu.controller.NavigationPageController;
 import com.rootwish.bilu.entity.SmokeEntity;
 import com.rootwish.bilu.model.InformationModel;
 import com.rootwish.bilu.service.impl.FreeMarkerWordServiceImpl;
 import com.rootwish.bilu.view.IndexView;
+import com.rootwish.bilu.view.NavigationPage;
 import de.felixroske.jfxsupport.AbstractJavaFxApplicationSupport;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -64,7 +66,7 @@ public class BiluApplication extends AbstractJavaFxApplicationSupport {
 //		freeMarkerWordService.exporMillCertificateWord(informationModel);
 
 //		SpringApplication.run(BiluApplication.class, args);
-		launch(BiluApplication.class , IndexView.class ,args);
+		launch(BiluApplication.class , NavigationPage.class ,args);
 
 
 	}
