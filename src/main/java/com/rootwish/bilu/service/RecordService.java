@@ -10,7 +10,9 @@ import com.rootwish.bilu.model.RecordModel;
  */
 public interface RecordService {
     boolean saveRecord(RecordModel recordModel);
-    RecordModel getRecord(Integer informationId);
-    boolean delRecord(Integer informationId);
-    boolean UpdateRecord(RecordModel recordModel);
+    RecordModel getRecordFoInformationId(Integer informationId);
+    RecordModel getRecordFoClassificationID(Integer classificationId);
+    boolean delRecordFoinformationId(Integer informationId);
+    boolean delRecordFoClassification(Integer classificationId);
+    boolean UpdataRecord(RecordModel recordModel);
 }

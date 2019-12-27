@@ -1,5 +1,7 @@
 package com.rootwish.bilu.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.rootwish.bilu.entity.InformationEntity;
 import com.rootwish.bilu.model.InformationModel;
 
 import java.util.List;
@@ -10,7 +12,7 @@ import java.util.List;
  * @author SZJ
  * @date 2019/12/10
  */
-public interface InformationService {
+public interface InformationService extends IService<InformationEntity> {
     boolean saveInformation(InformationModel informationModel);
 
     List<InformationModel> getInformationList(Integer classificationId);
@@ -20,4 +22,6 @@ public interface InformationService {
     void updateInformation(InformationModel informationModel);
 
     void delInformation(InformationModel informationModel);
+    void getInformation();
+    InformationModel getInformationFoName(String name);
 }

@@ -13,20 +13,24 @@ import java.util.ResourceBundle;
 public class NavigationPageController implements Initializable {
 
     @FXML
-    private TreeViewController treeViewController;
+    private static TreeViewController treeViewController = new TreeViewController();
 
     @FXML
-    private Button addInfo;
+    private static InfoListController infoListController = new InfoListController();
+
+    @FXML
+    private Button addInfo,infoList;
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
         addInfo.setOnAction((ActionEvent e) -> {
-            TreeViewController treeViewController = new TreeViewController();
-            treeViewController.showStage();
-            System.out.println("111");
+//            TreeViewController treeViewController = new TreeViewController();
+            treeViewController.showStage(null);
         });
-
-//        addInfo.setOnAction(event -> treeViewController.showStage());
+        infoList.setOnAction((ActionEvent e) -> {
+//            InfoListController infoListController = new InfoListController();
+            infoListController.showStage();
+        });
     }
 
 

@@ -9,16 +9,16 @@ import lombok.Data;
  * 类的描述
  *
  * @author SZJ
- * @date 2019/12/13
+ * @date 2019/12/27
  */
 @Data
-@TableName("record")
-public class RecordEntity {
+@TableName("note")
+public class NoteEntity {
     //id
     @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
+    //基本信息id
+    private Integer informationId;
     //笔录内容
-    private String record;
-    //分类id
-    private Integer classificationId;
+    private String noteText;
 }

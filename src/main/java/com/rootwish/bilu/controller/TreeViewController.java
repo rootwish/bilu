@@ -69,29 +69,22 @@ public class TreeViewController implements Initializable {
     private TextField name, site, certificateNumber, phoneNumber, age, householdAddress,
             theRealAddress, theCaseNumber, newType, newNum, newPrice, newCode;
 
+    private static InformationEntity informationEntity;
+
 
     @FXML
     private HTMLEditor htmlEditor;
 
-
-
     @Autowired
-    private InformationService realInformationService;
-
-    private static InformationService informationService;
-
-    private static InformationEntity informationEntity;
-
-    @PostConstruct
-    public void init() {
-        informationService = realInformationService;
-    }
+    private InformationService informationService;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        ObservableList<String> strList = FXCollections.observableArrayList();
-        recordList.setItems(strList);
+//        System.out.println(informationEntity);
+//
+//        ObservableList<String> strList = FXCollections.observableArrayList();
+//        ListView<String> listView = new ListView<>(c);
+//        recordList.setItems(listView);
         
         TreeItem<String> rootItem = new TreeItem<> ("分类");
         treeView.setRoot(rootItem);
@@ -164,7 +157,7 @@ public class TreeViewController implements Initializable {
             informationModel.setBuckleSingleNumber("扣单编号");
             informationModel.setTheCaseNumber(theCaseNumber.getText());
 
-            informationModel.setRecord(Arrays.asList(record.getText().split("\\r?\\n")));
+            informationModel.setRecord(record.getText());
 
             List<SmokeEntity> smokeEntityList = new ArrayList<>();
             SmokeEntity smokeEntity = new SmokeEntity();
