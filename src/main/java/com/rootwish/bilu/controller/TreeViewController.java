@@ -90,8 +90,8 @@ public class TreeViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        ObservableList<String> strList = FXCollections.observableArrayList();
-        recordList.setItems(strList);
+//        ObservableList<String> strList = FXCollections.observableArrayList();
+//        recordList.setItems(strList);
         
         TreeItem<String> rootItem = new TreeItem<> ("分类");
         treeView.setRoot(rootItem);
