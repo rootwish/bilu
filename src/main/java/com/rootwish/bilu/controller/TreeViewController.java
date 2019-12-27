@@ -1,6 +1,7 @@
 package com.rootwish.bilu.controller;
 
 import com.rootwish.bilu.BiluApplication;
+import com.rootwish.bilu.entity.InformationEntity;
 import com.rootwish.bilu.entity.SmokeEntity;
 import com.rootwish.bilu.model.InformationModel;
 import com.rootwish.bilu.model.Smoke;
@@ -174,7 +175,7 @@ public class TreeViewController implements Initializable {
 
     }
 
-    public void showStage() {
+    public void showStage(InformationEntity informationEntity) {
         Stage secondWindow=new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/IndexView.fxml"));
         Scene scene= null;
