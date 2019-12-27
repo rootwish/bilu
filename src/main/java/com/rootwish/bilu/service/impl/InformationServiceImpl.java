@@ -170,4 +170,39 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
             smokeMapper.deleteById(smoke.get(i).getId());
         }
     }
+
+    @Override
+    public void getInformation() {
+        List<InformationEntity> informationEntities = informationMapper.selectList(new QueryWrapper<>());
+        for (int i = 0;i<informationEntities.size();i++){
+            System.out.println(informationEntities.get(i));
+        }
+    }
+
+    @Override
+    public InformationModel getInformationFoName(String name) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("name",name);
+        InformationEntity informationEntity = informationMapper.selectOne(queryWrapper);
+        InformationModel informationModel = new InformationModel();
+        informationEntity.setId(informationModel.getId());
+        informationEntity.setSeizedTime(informationModel.getSeizedTime());
+        informationEntity.setStartTime(informationModel.getStartTime());
+        informationEntity.setSite(informationModel.getSite());
+        informationEntity.setCertificateType(informationModel.getCertificateType());
+        informationEntity.setCertificateNumber(informationModel.getCertificateNumber());
+        informationEntity.setPhoneNumber(informationModel.getPhoneNumber());
+        informationEntity.setAge(informationModel.getAge());
+        informationEntity.setSex(informationModel.getSex());
+        informationEntity.setHouseholdAddress(informationModel.getHouseholdAddress());
+        informationEntity.setTobaccoNumber(informationModel.getTobaccoNumber());
+        informationEntity.setTheRealAddress(informationModel.getTheRealAddress());
+        informationEntity.setBuckleSingleNumber(informationModel.getBuckleSingleNumber());
+        informationEntity.setTheCaseNumber(informationModel.getTheCaseNumber());
+        informationEntity.setLe(informationModel.getLe());
+        informationEntity.setYear(informationModel.getYear());
+        informationEntity.setClassificationId(informationModel.getClassificationId());
+        informationEntity.setName(informationModel.getName());
+        return informationModel;
+    }
 }

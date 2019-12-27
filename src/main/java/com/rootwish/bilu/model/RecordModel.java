@@ -19,4 +19,6 @@ public class RecordModel {
     private Integer informationId;
     //笔录内容
     private String record;
+    //分类id
+    private Integer classificationId;
 }

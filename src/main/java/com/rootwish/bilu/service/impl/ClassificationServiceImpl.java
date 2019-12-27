@@ -55,4 +55,17 @@ public class ClassificationServiceImpl extends ServiceImpl<ClassificationMapper,
 
         return list;
     }
+
+    @Override
+    public ClassificationModel getClassification(String classiofyName) {
+            QueryWrapper queryWrapper = new QueryWrapper();
+            queryWrapper.eq("classify_name",classiofyName);
+            ClassificationEntity one = this.getOne(queryWrapper);
+            ClassificationModel classificationModel = new ClassificationModel();
+            classificationModel.setId(one.getId());
+            classificationModel.setClassifyName(one.getClassifyName());
+            classificationModel.setPid(one.getPid());
+            return classificationModel;
+    }
+
 }

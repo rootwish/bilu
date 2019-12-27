@@ -20,4 +20,6 @@ public interface InformationService {
     void updateInformation(InformationModel informationModel);
 
     void delInformation(InformationModel informationModel);
+    void getInformation();
+    InformationModel getInformationFoName(String name);
 }

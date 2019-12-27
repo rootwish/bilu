@@ -157,6 +157,7 @@ public class TreeViewController implements Initializable {
             freeMarkerWordService.exporMillCertificateWord(informationModel);
             boolean b = informationService.saveInformation(informationModel);
             System.out.println(b);
+            informationService.getInformation();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("保存成功！");
             alert.setHeaderText("保存文档于程序目录workDoc下");
@@ -166,5 +167,4 @@ public class TreeViewController implements Initializable {
         });
 
     }
-
 }
