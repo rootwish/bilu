@@ -7,7 +7,11 @@ import com.rootwish.bilu.entity.SmokeEntity;
 import com.rootwish.bilu.mapper.InformationMapper;
 import com.rootwish.bilu.mapper.SmokeMapper;
 import com.rootwish.bilu.model.InformationModel;
+import com.rootwish.bilu.model.NoteModel;
+import com.rootwish.bilu.model.RecordModel;
 import com.rootwish.bilu.service.InformationService;
+import com.rootwish.bilu.service.NoteService;
+import com.rootwish.bilu.service.RecordService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +32,10 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
     private InformationMapper informationMapper;
     @Autowired
     private SmokeMapper smokeMapper;
+    @Autowired
+    private RecordService recordService;
+    @Autowired
+    private NoteService noteService;
 
     @Override
     public boolean saveInformation(InformationModel informationModel) {
@@ -66,6 +74,12 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
             if (0>=smokeid){
                 rel = false;
             }
+        }
+        NoteModel noteFoInformationId = noteService.getNoteFoInformationId(informationEntity.getId());
+        noteFoInformationId.setNoteText(informationModel.getNote());
+        boolean b = noteService.updateNote(noteFoInformationId);
+        if (b = false){
+            rel = false;
         }
         return rel;
     }
@@ -131,6 +145,10 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
         smokeWrapper.eq("information_id",informationEntity.getId());
         List<SmokeEntity> smokeEntities = smokeMapper.selectList(smokeWrapper);
         informationModel.setSmoke(smokeEntities);
+        RecordModel recordFoClassificationID = recordService.getRecordFoClassificationID(informationEntity.getClassificationId());
+        informationModel.setRecord(recordFoClassificationID.getRecord());
+        NoteModel noteFoInformationId = noteService.getNoteFoInformationId(informationEntity.getClassificationId());
+        informationModel.setNote(noteFoInformationId.getNoteText());
         return informationModel;
     }
 

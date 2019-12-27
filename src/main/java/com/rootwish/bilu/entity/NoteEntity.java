@@ -4,23 +4,21 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import sun.dc.pr.PRError;
 
 /**
  * 类的描述
  *
  * @author SZJ
- * @date 2019/12/20
+ * @date 2019/12/27
  */
 @Data
-@TableName(value = "record")
-public class Record {
+@TableName("note")
+public class NoteEntity {
+    //id
     @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
-
+    //基本信息id
     private Integer informationId;
-
-    private String record;
-
-    private String classificationId;
+    //笔录内容
+    private String noteText;
 }

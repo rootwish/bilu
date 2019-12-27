@@ -25,7 +25,6 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper,RecordEntity> im
     @Override
     public boolean saveRecord(RecordModel recordModel) {
         RecordEntity recordEntity = new RecordEntity();
-        recordEntity.setInformationId(recordModel.getInformationId());
         recordEntity.setRecord(recordModel.getRecord());
         recordEntity.setClassificationId(recordModel.getClassificationId());
         int insert = recordMapper.insert(recordEntity);
@@ -44,7 +43,6 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper,RecordEntity> im
         RecordEntity recordEntity = recordMapper.selectOne(wrapper);
         RecordModel recordModel = new RecordModel();
         recordModel.setId(recordEntity.getId());
-        recordModel.setInformationId(recordEntity.getInformationId());
         recordModel.setRecord(recordEntity.getRecord());
         recordModel.setClassificationId(recordEntity.getClassificationId());
         return recordModel;
@@ -57,7 +55,6 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper,RecordEntity> im
         RecordEntity one = this.getOne(queryWrapper);
         RecordModel recordModel = new RecordModel();
         recordModel.setId(one.getId());
-        recordModel.setInformationId(one.getInformationId());
         recordModel.setRecord(one.getRecord());
         recordModel.setClassificationId(one.getClassificationId());
         return recordModel;
@@ -89,7 +86,6 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper,RecordEntity> im
     public boolean UpdataRecord(RecordModel recordModel) {
         RecordEntity recordEntity = new RecordEntity();
         recordEntity.setId(recordModel.getId());
-        recordEntity.setInformationId(recordModel.getInformationId());
         recordEntity.setRecord(recordModel.getRecord());
         recordEntity.setClassificationId(recordModel.getClassificationId());
 

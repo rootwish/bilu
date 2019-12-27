@@ -52,4 +52,5 @@ public class InformationEntity {
     //姓名
     private String name;
 
+
 }

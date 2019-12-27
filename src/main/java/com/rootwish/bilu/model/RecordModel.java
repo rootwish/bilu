@@ -15,8 +15,6 @@ import lombok.Data;
 public class RecordModel {
     //id
     private Integer id;
-    //基本信息id
-    private Integer informationId;
     //笔录内容
     private String record;
     //分类id

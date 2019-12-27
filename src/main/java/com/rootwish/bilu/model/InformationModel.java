@@ -53,6 +53,8 @@ public class InformationModel {
     private String tobaccoNumber;
     //姓名
     private String name;
+    //模板
+    private String record;
     //笔录
-    private List record;
+    private String note;
 }
