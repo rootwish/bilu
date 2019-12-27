@@ -1,7 +1,6 @@
 package com.rootwish.bilu.controller;
 
 import com.rootwish.bilu.BiluApplication;
-import com.rootwish.bilu.entity.InformationEntity;
 import com.rootwish.bilu.entity.SmokeEntity;
 import com.rootwish.bilu.model.InformationModel;
 import com.rootwish.bilu.model.Smoke;
@@ -21,10 +20,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.web.HTMLEditor;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -37,7 +33,6 @@ import java.util.regex.Pattern;
 /**
  * 中文
  */
-@Component
 @FXMLController
 public class TreeViewController implements Initializable {
 
@@ -46,9 +41,6 @@ public class TreeViewController implements Initializable {
 
     @FXML
     private TableView tableView;
-
-    @FXML
-    private ListView recordList;
 
     @FXML
     private TableColumn type ,num, price,code;
@@ -69,8 +61,6 @@ public class TreeViewController implements Initializable {
     private TextField name, site, certificateNumber, phoneNumber, age, householdAddress,
             theRealAddress, theCaseNumber, newType, newNum, newPrice, newCode;
 
-    private static InformationEntity informationEntity;
-
 
     @FXML
     private HTMLEditor htmlEditor;
@@ -80,11 +70,6 @@ public class TreeViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        System.out.println(informationEntity);
-//
-//        ObservableList<String> strList = FXCollections.observableArrayList();
-//        ListView<String> listView = new ListView<>(c);
-//        recordList.setItems(listView);
         
         TreeItem<String> rootItem = new TreeItem<> ("分类");
         treeView.setRoot(rootItem);
@@ -109,9 +94,6 @@ public class TreeViewController implements Initializable {
         sex.getSelectionModel().selectFirst();
         certificateType.getItems().addAll("身份证","驾驶证","暂住证","临时身份证");
         certificateType.getSelectionModel().selectFirst();
-
-
-
 
         add.setOnAction((ActionEvent e) -> {
             if(newType.getText() !=null && newNum.getText() != null && newPrice.getText() != null && newCode.getText() != null) {
@@ -157,7 +139,7 @@ public class TreeViewController implements Initializable {
             informationModel.setBuckleSingleNumber("扣单编号");
             informationModel.setTheCaseNumber(theCaseNumber.getText());
 
-            informationModel.setRecord(record.getText());
+            informationModel.setNote(record.getText());
 
             List<SmokeEntity> smokeEntityList = new ArrayList<>();
             SmokeEntity smokeEntity = new SmokeEntity();
@@ -182,7 +164,6 @@ public class TreeViewController implements Initializable {
             freeMarkerWordService.exporMillCertificateWord(informationModel);
             boolean b = informationService.saveInformation(informationModel);
             System.out.println(b);
-//            realInformationService.getInformation();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("保存成功！");
             alert.setHeaderText("保存文档于程序目录workDoc下");
@@ -193,27 +174,7 @@ public class TreeViewController implements Initializable {
 
     }
 
-//    public TreeViewController(InformationEntity informationEntity) {
-//        // We received the first controller, now let's make it usable throughout this controller.
-//        this.controller1 = controller1;
-//        // Create the new stage
-//        thisStage = new Stage();
-//        // Load the FXML file
-//        try {
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("Layout2.fxml"));
-//            // Set this class as the controller
-//            loader.setController(this);
-//            // Load the scene
-//            thisStage.setScene(new Scene(loader.load()));
-//            // Setup the window/stage
-//            thisStage.setTitle("Passing Controllers Example - Layout2");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-    public void showStage(InformationEntity informationEntity) {
-        this.informationEntity = informationEntity;
+    public void showStage() {
         Stage secondWindow=new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/IndexView.fxml"));
         Scene scene= null;
