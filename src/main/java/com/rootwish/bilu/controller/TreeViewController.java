@@ -1,23 +1,34 @@
 package com.rootwish.bilu.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.rootwish.bilu.BiluApplication;
+import com.rootwish.bilu.entity.ClassificationEntity;
 import com.rootwish.bilu.entity.InformationEntity;
+import com.rootwish.bilu.entity.RecordEntity;
 import com.rootwish.bilu.entity.SmokeEntity;
 import com.rootwish.bilu.model.InformationModel;
 import com.rootwish.bilu.model.Smoke;
+import com.rootwish.bilu.service.ClassificationService;
 import com.rootwish.bilu.service.InformationService;
+import com.rootwish.bilu.service.RecordService;
 import com.rootwish.bilu.service.impl.FreeMarkerWordServiceImpl;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.web.HTMLEditor;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +38,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.swing.*;
 import java.io.File;
+import javax.xml.soap.Text;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -71,40 +83,61 @@ public class TreeViewController implements Initializable {
     private TextField name, site, certificateNumber, phoneNumber, age, householdAddress,
             theRealAddress, theCaseNumber, newType, newNum, newPrice, newCode,buckleSingleNumber,tobaccoNumber;
 
-
-    @FXML
-    private HTMLEditor htmlEditor;
-
-
-
     @Autowired
     private InformationService realInformationService;
+    @Autowired
+    private RecordService realRecordService;
+    @Autowired
+    private ClassificationService relalClassificationService;
 
     private static InformationService informationService;
+    private static RecordService recordService;
+    private static ClassificationService classificationService;
 
     private static InformationEntity informationEntity;
 
     @PostConstruct
     public void init() {
         informationService = realInformationService;
+        recordService = realRecordService;
+        classificationService = relalClassificationService;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //根据分类读取笔录模板
+        if(null != informationEntity) {
+            QueryWrapper queryWrapper = new QueryWrapper();
+            queryWrapper.eq("classification_id", informationEntity.getClassificationId());
+            RecordEntity recordEntity = recordService.getOne(queryWrapper);
 
-//        ObservableList<String> strList = FXCollections.observableArrayList();
-//        recordList.setItems(strList);
+            ObservableList<String> strList = FXCollections.observableArrayList(Arrays.asList(recordEntity.getRecord().replace("问", "**问").split("\\*\\*")));
+            recordList.setItems(strList);
+        }
+
+
+        recordList.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event)
+            {
+                if(event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 1) {
+                    int index = recordList.getSelectionModel().getSelectedIndex();
+                    record.setText(record.getText() + "\n" + recordList.getItems().get(index));
+                }
+            }
+        });
         
-        TreeItem<String> rootItem = new TreeItem<> ("分类");
+        TreeItem<String> rootItem = new TreeItem<> ("全部");
         treeView.setRoot(rootItem);
         rootItem.setExpanded(true);
         TreeItem<String> item = new TreeItem<> ("无证运输");
-        TreeItem<String> item1 = new TreeItem<> ("货主笔录");
-        TreeItem<String> item2 = new TreeItem<> ("司机+货主笔录");
-        TreeItem<String> item3 = new TreeItem<> ("司机笔录");
-        item.getChildren().add(item1);
-        item.getChildren().add(item2);
-        item.getChildren().add(item3);
+//        TreeItem<String> item1 = new TreeItem<> ("货主笔录");
+//        TreeItem<String> item2 = new TreeItem<> ("司机+货主笔录");
+//        TreeItem<String> item3 = new TreeItem<> ("司机笔录");
+//        item.getChildren().add(item1);
+//        item.getChildren().add(item2);
+//        item.getChildren().add(item3);
         rootItem.getChildren().add(item);
         item = new TreeItem<> ("非渠道购进");
         rootItem.getChildren().add(item);
@@ -120,7 +153,36 @@ public class TreeViewController implements Initializable {
         certificateType.getSelectionModel().selectFirst();
 
 
-
+        //分类树点击事件
+//        treeView.focusModelProperty().setValue(item);
+//        treeView.setFocusModel( );
+        treeView.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>()
+        {
+            public void handle(MouseEvent event)
+            {
+                Node node = event.getPickResult().getIntersectedNode();
+                if (node instanceof Text || (node instanceof TreeCell && ((TreeCell) node).getText() != null)) {
+                    String name = (String) ((TreeItem)treeView.getSelectionModel().getSelectedItem()).getValue();
+                    System.out.println("Node click: " + name);
+                    QueryWrapper queryWrapper = new QueryWrapper();
+                    queryWrapper.eq("classify_name", name);
+                    ClassificationEntity classificationEntity = classificationService.getOne(queryWrapper);
+                    QueryWrapper queryWrapper1 = new QueryWrapper();
+                    if(null == classificationEntity) {
+                        recordList.setItems(null);
+                        return;
+                    }
+                    queryWrapper1.eq("classification_id", classificationEntity.getId());
+                    RecordEntity recordEntity = recordService.getOne(queryWrapper1);
+                    if(null == recordEntity) {
+                        recordList.setItems(null);
+                        return;
+                    }
+                    ObservableList<String> strList = FXCollections.observableArrayList(Arrays.asList(recordEntity.getRecord().replace("问", "**问").split("\\*\\*")));
+                    recordList.setItems(strList);
+                }
+            }
+        });
 
         add.setOnAction((ActionEvent e) -> {
             if(newType.getText() !=null && newNum.getText() != null && newPrice.getText() != null && newCode.getText() != null) {
@@ -166,6 +228,10 @@ public class TreeViewController implements Initializable {
             informationModel.setBuckleSingleNumber("扣单编号");
             informationModel.setTheCaseNumber(theCaseNumber.getText());
 
+            //获取选中节点
+            TreeItem oldItem =(TreeItem)treeView.getSelectionModel().getSelectedItem();
+
+            informationModel.setRecord(record.getText());
             informationModel.setNote(record.getText());
 
             List<SmokeEntity> smokeEntityList = new ArrayList<>();
@@ -306,7 +372,7 @@ public class TreeViewController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/IndexView.fxml"));
         Scene scene= null;
         try {
-            scene = new Scene(loader.load(),500,500);
+            scene = new Scene(loader.load(),1200,700);
         } catch (IOException e) {
             e.printStackTrace();
         }
