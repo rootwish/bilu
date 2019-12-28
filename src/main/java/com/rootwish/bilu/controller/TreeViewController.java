@@ -69,7 +69,7 @@ public class TreeViewController implements Initializable {
 
     @FXML
     private TextField name, site, certificateNumber, phoneNumber, age, householdAddress,
-            theRealAddress, theCaseNumber, newType, newNum, newPrice, newCode;
+            theRealAddress, theCaseNumber, newType, newNum, newPrice, newCode,buckleSingleNumber,tobaccoNumber;
 
 
     @FXML
@@ -203,12 +203,81 @@ public class TreeViewController implements Initializable {
             /*File file = new File("D:\\work\\bilu\\bilu\\src\\main\\resources\\template");
             JFileChooser jFileChooser = new JFileChooser(file);
             jFileChooser.showOpenDialog(null);*/
+            System.out.println(System.getProperty("user.dir")+"\\workDoc");
             try {
                 Runtime.getRuntime().exec("explorer /e,/root,D:\\work\\bilu\\bilu\\src\\main\\resources\\template");
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
         });
+
+        if (null != informationEntity){
+            InformationModel information = informationService.getInformation(informationEntity.getId());
+            //查获时间
+            //seizedTime.setValue();
+            //笔录开始时间
+
+            //笔录结束时间
+
+            //询问地点
+            site.setText(information.getSite());
+            //姓名
+            name.setText(information.getName());
+            //证件类型
+
+            switch (information.getCertificateType()){
+                case "身份证":
+                    certificateType.getItems().clear();
+                    certificateType.getItems().addAll(information.getCertificateType(),"驾驶证","暂住证","临时身份证");
+                    certificateType.getSelectionModel().selectFirst();
+                    break;
+                case "驾驶证":
+                    certificateType.getItems().clear();
+                    certificateType.getItems().addAll(information.getCertificateType(),"身份证","暂住证","临时身份证");
+                    certificateType.getSelectionModel().selectFirst();
+                    break;
+                case "暂住证":
+                    certificateType.getItems().clear();
+                    certificateType.getItems().addAll(information.getCertificateType(),"身份证","驾驶证","临时身份证");
+                    certificateType.getSelectionModel().selectFirst();
+                    break;
+                case "临时身份证":
+                    certificateType.getItems().clear();
+                    certificateType.getItems().addAll(information.getCertificateType(),"身份证","暂住证","驾驶证");
+                    certificateType.getSelectionModel().selectFirst();
+                    break;
+            }
+            //证件号码
+            certificateNumber.setText(information.getCertificateNumber());
+            //电话号码
+            phoneNumber.setText(information.getPhoneNumber());
+            //年龄
+            age.setText(information.getAge());
+            String SEX = "男";
+            if ("男".equals(information.getSex())){
+                SEX = "女";
+            }
+            //性别
+            sex.getItems().clear();
+            sex.getItems().addAll(information.getSex(),SEX);
+            sex.getSelectionModel().selectFirst();
+            //户籍地址
+            householdAddress.setText(information.getHouseholdAddress());
+            //实际住址
+            theRealAddress.setText(information.getTheRealAddress());
+            //烟草证号
+            tobaccoNumber.setText(information.getTobaccoNumber());
+            //案件编号
+            theCaseNumber.setText(information.getTheCaseNumber());
+            //扣单编号
+            buckleSingleNumber.setText(information.getBuckleSingleNumber());
+
+            //smoke
+
+            //笔录
+            record.appendText(information.getNote());
+        }
+
 
     }
 
