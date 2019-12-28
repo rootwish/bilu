@@ -1,5 +1,6 @@
 package com.rootwish.bilu.controller;
 
+import com.rootwish.bilu.entity.InformationEntity;
 import com.rootwish.bilu.model.ClassificationModel;
 import com.rootwish.bilu.model.RecordModel;
 import com.rootwish.bilu.service.ClassificationService;
@@ -10,11 +11,16 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.TextArea;
+import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -69,5 +75,18 @@ public class RecordController implements Initializable {
             boolean b = recordService.UpdataRecord(recordFoClassificationID);
             System.out.println(b);
         });
+    }
+
+    public void showStage() {
+        Stage secondWindow=new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/record.fxml"));
+        Scene scene= null;
+        try {
+            scene = new Scene(loader.load(),1200,700);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        secondWindow.setScene(scene);
+        secondWindow.showAndWait();
     }
 }

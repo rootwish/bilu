@@ -93,7 +93,7 @@ public class InfoListController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/InfoList.fxml"));
         Scene scene= null;
         try {
-            scene = new Scene(loader.load(),500,500);
+            scene = new Scene(loader.load(),1000,500);
         } catch (IOException e) {
             e.printStackTrace();
         }

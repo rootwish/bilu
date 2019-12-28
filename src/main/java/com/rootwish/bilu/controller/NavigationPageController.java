@@ -19,7 +19,10 @@ public class NavigationPageController implements Initializable {
     private static InfoListController infoListController = new InfoListController();
 
     @FXML
-    private Button addInfo,infoList;
+    private static RecordController recordController = new RecordController();
+
+    @FXML
+    private Button addInfo,infoList,customRecord;
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
@@ -30,6 +33,10 @@ public class NavigationPageController implements Initializable {
         infoList.setOnAction((ActionEvent e) -> {
 //            InfoListController infoListController = new InfoListController();
             infoListController.showStage();
+        });
+        customRecord.setOnAction((ActionEvent e) -> {
+//            InfoListController infoListController = new InfoListController();
+            recordController.showStage();
         });
     }
 
