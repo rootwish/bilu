@@ -25,6 +25,8 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import javax.swing.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -54,7 +56,7 @@ public class TreeViewController implements Initializable {
     private TableColumn type ,num, price,code;
 
     @FXML
-    private Button add,save;
+    private Button add,save,preview;
 
     @FXML
     private ChoiceBox sex,certificateType;
@@ -196,6 +198,16 @@ public class TreeViewController implements Initializable {
 //            alert.setContentText("Ooops, there was an error!");
 
             alert.showAndWait();
+        });
+        preview.setOnAction((ActionEvent e)->{
+            /*File file = new File("D:\\work\\bilu\\bilu\\src\\main\\resources\\template");
+            JFileChooser jFileChooser = new JFileChooser(file);
+            jFileChooser.showOpenDialog(null);*/
+            try {
+                Runtime.getRuntime().exec("explorer /e,/root,D:\\work\\bilu\\bilu\\src\\main\\resources\\template");
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
         });
 
     }
