@@ -55,7 +55,7 @@
             <Label alignment="CENTER" contentDisplay="CENTER" text="实际地址" GridPane.halignment="CENTER" GridPane.rowIndex="11" />
             <TextField fx:id="theRealAddress" GridPane.columnIndex="1" GridPane.rowIndex="11" />
             <Label alignment="CENTER" contentDisplay="CENTER" text="烟草证号" GridPane.halignment="CENTER" GridPane.rowIndex="12" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="12" />
+            <TextField fx:id="tobaccoNumber" GridPane.columnIndex="1" GridPane.rowIndex="12" />
             <Label alignment="CENTER" contentDisplay="CENTER" text="案件编号" GridPane.halignment="CENTER" GridPane.rowIndex="13" />
             <TextField fx:id="theCaseNumber" GridPane.columnIndex="1" GridPane.rowIndex="13" />
             <Label alignment="CENTER" contentDisplay="CENTER" text="扣单编号" GridPane.halignment="CENTER" GridPane.rowIndex="14" />
