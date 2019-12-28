@@ -2,11 +2,13 @@ package com.rootwish.bilu.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.rootwish.bilu.BiluApplication;
+import com.rootwish.bilu.entity.ClassificationEntity;
 import com.rootwish.bilu.entity.InformationEntity;
 import com.rootwish.bilu.entity.RecordEntity;
 import com.rootwish.bilu.entity.SmokeEntity;
 import com.rootwish.bilu.model.InformationModel;
 import com.rootwish.bilu.model.Smoke;
+import com.rootwish.bilu.service.ClassificationService;
 import com.rootwish.bilu.service.InformationService;
 import com.rootwish.bilu.service.RecordService;
 import com.rootwish.bilu.service.impl.FreeMarkerWordServiceImpl;
@@ -85,9 +87,12 @@ public class TreeViewController implements Initializable {
     private InformationService realInformationService;
     @Autowired
     private RecordService realRecordService;
+    @Autowired
+    private ClassificationService relalClassificationService;
 
     private static InformationService informationService;
     private static RecordService recordService;
+    private static ClassificationService classificationService;
 
     private static InformationEntity informationEntity;
 
@@ -95,6 +100,7 @@ public class TreeViewController implements Initializable {
     public void init() {
         informationService = realInformationService;
         recordService = realRecordService;
+        classificationService = relalClassificationService;
     }
 
     @Override
@@ -108,13 +114,7 @@ public class TreeViewController implements Initializable {
             ObservableList<String> strList = FXCollections.observableArrayList(Arrays.asList(recordEntity.getRecord().replace("问", "**问").split("\\*\\*")));
             recordList.setItems(strList);
         }
-//        recordList.getSelectionModel().selectedItemProperty().addListener(
-//                new ChangeListener() {
-//                    @Override
-//                    public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-//                        record.setText(record.getText() + "\n" + newValue);
-//                    }
-//                });
+
 
         recordList.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
@@ -164,6 +164,22 @@ public class TreeViewController implements Initializable {
                 if (node instanceof Text || (node instanceof TreeCell && ((TreeCell) node).getText() != null)) {
                     String name = (String) ((TreeItem)treeView.getSelectionModel().getSelectedItem()).getValue();
                     System.out.println("Node click: " + name);
+                    QueryWrapper queryWrapper = new QueryWrapper();
+                    queryWrapper.eq("classify_name", name);
+                    ClassificationEntity classificationEntity = classificationService.getOne(queryWrapper);
+                    QueryWrapper queryWrapper1 = new QueryWrapper();
+                    if(null == classificationEntity) {
+                        recordList.setItems(null);
+                        return;
+                    }
+                    queryWrapper1.eq("classification_id", classificationEntity.getId());
+                    RecordEntity recordEntity = recordService.getOne(queryWrapper1);
+                    if(null == recordEntity) {
+                        recordList.setItems(null);
+                        return;
+                    }
+                    ObservableList<String> strList = FXCollections.observableArrayList(Arrays.asList(recordEntity.getRecord().replace("问", "**问").split("\\*\\*")));
+                    recordList.setItems(strList);
                 }
             }
         });
