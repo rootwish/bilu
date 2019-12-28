@@ -34,6 +34,8 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import javax.swing.*;
+import java.io.File;
 import javax.xml.soap.Text;
 import java.io.IOException;
 import java.net.URL;
@@ -64,7 +66,7 @@ public class TreeViewController implements Initializable {
     private TableColumn type ,num, price,code;
 
     @FXML
-    private Button add,save;
+    private Button add,save,preview;
 
     @FXML
     private ChoiceBox sex,certificateType;
@@ -150,13 +152,6 @@ public class TreeViewController implements Initializable {
         certificateType.getItems().addAll("身份证","驾驶证","暂住证","临时身份证");
         certificateType.getSelectionModel().selectFirst();
 
-//        tableView.getSelectionModel().selectedItemProperty().addListener(
-//            new ChangeListener<TreeItem <String>>() {
-//            @Override
-//            public void changed(ObservableValue<? extends TreeItem<String>> observableValue,
-//            TreeItem<String> oldItem, TreeItem<String> newItem) {
-//                System.out.println(newItem.getValue());
-//        }});
 
         //分类树点击事件
 //        treeView.focusModelProperty().setValue(item);
@@ -221,6 +216,7 @@ public class TreeViewController implements Initializable {
             TreeItem oldItem =(TreeItem)treeView.getSelectionModel().getSelectedItem();
 
             informationModel.setRecord(record.getText());
+            informationModel.setNote(record.getText());
 
             List<SmokeEntity> smokeEntityList = new ArrayList<>();
             SmokeEntity smokeEntity = new SmokeEntity();
@@ -252,6 +248,16 @@ public class TreeViewController implements Initializable {
 //            alert.setContentText("Ooops, there was an error!");
 
             alert.showAndWait();
+        });
+        preview.setOnAction((ActionEvent e)->{
+            /*File file = new File("D:\\work\\bilu\\bilu\\src\\main\\resources\\template");
+            JFileChooser jFileChooser = new JFileChooser(file);
+            jFileChooser.showOpenDialog(null);*/
+            try {
+                Runtime.getRuntime().exec("explorer /e,/root,D:\\work\\bilu\\bilu\\src\\main\\resources\\template");
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
         });
 
     }

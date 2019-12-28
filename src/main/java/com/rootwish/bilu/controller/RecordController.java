@@ -1,6 +1,5 @@
 package com.rootwish.bilu.controller;
 
-import com.rootwish.bilu.entity.InformationEntity;
 import com.rootwish.bilu.model.ClassificationModel;
 import com.rootwish.bilu.model.RecordModel;
 import com.rootwish.bilu.service.ClassificationService;
@@ -19,6 +18,8 @@ import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.annotation.PostConstruct;
 
 import java.io.IOException;
 import java.net.URL;
@@ -41,11 +42,19 @@ public class RecordController implements Initializable {
     private javafx.scene.control.Button save;
 
     @Autowired
-    private RecordService recordService;
+    private RecordService ATWrecordService;
 
     @Autowired
-    private ClassificationService classificationService;
+    private ClassificationService AUTclassificationService;
 
+    private static RecordService recordService;
+    private static ClassificationService classificationService;
+
+    @PostConstruct
+    public void init(){
+        recordService = ATWrecordService;
+        classificationService = AUTclassificationService;
+    }
 
 
 

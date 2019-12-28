@@ -84,6 +84,10 @@
       <Button fx:id="save" layoutX="652.0" layoutY="594.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="131.0" text="保存" textFill="#0d18ee" />
       <Label layoutX="932.0" layoutY="14.0" text="笔录" />
       <TextArea fx:id="record" layoutX="920.0" layoutY="38.0" prefHeight="286.0" prefWidth="353.0" />
-      <ListView fx:id="recordList" layoutX="917.0" layoutY="349.0" prefHeight="235.0" prefWidth="353.0" />
+      <Button fx:id="preview" layoutX="1097.0" layoutY="596.0" mnemonicParsing="false" text="预览" textFill="#252ab5">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </Pane>

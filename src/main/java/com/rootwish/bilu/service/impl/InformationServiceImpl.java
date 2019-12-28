@@ -6,9 +6,11 @@ import com.rootwish.bilu.entity.InformationEntity;
 import com.rootwish.bilu.entity.SmokeEntity;
 import com.rootwish.bilu.mapper.InformationMapper;
 import com.rootwish.bilu.mapper.SmokeMapper;
+import com.rootwish.bilu.model.ClassificationModel;
 import com.rootwish.bilu.model.InformationModel;
 import com.rootwish.bilu.model.NoteModel;
 import com.rootwish.bilu.model.RecordModel;
+import com.rootwish.bilu.service.ClassificationService;
 import com.rootwish.bilu.service.InformationService;
 import com.rootwish.bilu.service.NoteService;
 import com.rootwish.bilu.service.RecordService;
@@ -36,6 +38,8 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
     private RecordService recordService;
     @Autowired
     private NoteService noteService;
+    @Autowired
+    private ClassificationService classificationService;
 
     @Override
     public boolean saveInformation(InformationModel informationModel) {
@@ -55,7 +59,8 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
         informationEntity.setTheCaseNumber(informationModel.getTheCaseNumber());
         informationEntity.setLe(informationModel.getLe());
         informationEntity.setYear(informationModel.getYear());
-        informationEntity.setClassificationId(informationModel.getClassificationId());
+        ClassificationModel classification = classificationService.getClassification(informationModel.getClassificationName());
+        informationEntity.setClassificationId(classification.getId());
         informationEntity.setName(informationModel.getName());
         boolean rel = true;
         int informationid = informationMapper.insert(informationEntity);
@@ -84,7 +89,7 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
         return rel;
     }
 
-    @Override
+    /*@Override
     public List<InformationModel> getInformationList(Integer classificationId) {
         QueryWrapper<InformationEntity> wrapper = new QueryWrapper<>();
         wrapper.eq("classification_id",classificationId);
@@ -117,7 +122,7 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
             informationModels.add(informationModel);
         }
         return informationModels;
-    }
+    }*/
 
     @Override
     public InformationModel getInformation(Integer id) {
@@ -139,6 +144,8 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
         informationModel.setTheCaseNumber(informationEntity.getTheCaseNumber());
         informationModel.setLe(informationEntity.getLe());
         informationModel.setYear(informationEntity.getYear());
+        ClassificationModel classification = classificationService.getClassification(informationEntity.getClassificationId());
+        informationModel.setClassificationName(classification.getClassifyName());
         informationModel.setClassificationId(informationEntity.getClassificationId());
         informationModel.setName(informationEntity.getName());
         QueryWrapper<SmokeEntity> smokeWrapper = new QueryWrapper<>();

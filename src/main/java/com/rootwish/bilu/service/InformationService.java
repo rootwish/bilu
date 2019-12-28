@@ -15,7 +15,7 @@ import java.util.List;
 public interface InformationService extends IService<InformationEntity> {
     boolean saveInformation(InformationModel informationModel);
 
-    List<InformationModel> getInformationList(Integer classificationId);
+    /*List<InformationModel> getInformationList(Integer classificationId);*/
 
     InformationModel getInformation(Integer id);
 

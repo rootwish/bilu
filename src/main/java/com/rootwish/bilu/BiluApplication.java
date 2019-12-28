@@ -5,6 +5,7 @@ import com.rootwish.bilu.entity.SmokeEntity;
 import com.rootwish.bilu.model.InformationModel;
 import com.rootwish.bilu.service.impl.FreeMarkerWordServiceImpl;
 import com.rootwish.bilu.view.IndexView;
+import com.rootwish.bilu.view.RecordView;
 import com.rootwish.bilu.view.NavigationPage;
 import de.felixroske.jfxsupport.AbstractJavaFxApplicationSupport;
 import org.mybatis.spring.annotation.MapperScan;
