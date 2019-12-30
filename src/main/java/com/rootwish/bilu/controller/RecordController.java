@@ -70,7 +70,7 @@ public class RecordController implements Initializable {
                 int selectedIndex = classification.getSelectionModel().getSelectedIndex();
                 ClassificationModel classification = classificationService.getClassification(greetings[selectedIndex]);
                 RecordModel recordFoClassificationID = recordService.getRecordFoClassificationID(classification.getId());
-                record.appendText(recordFoClassificationID.getRecord());
+                record.setText(recordFoClassificationID.getRecord());
             }
         });
 
@@ -90,8 +90,9 @@ public class RecordController implements Initializable {
         Stage secondWindow=new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/record.fxml"));
         Scene scene= null;
+        secondWindow.setTitle("笔录模板");
         try {
-            scene = new Scene(loader.load(),1200,700);
+            scene = new Scene(loader.load(),850,650);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1353,7 +1353,6 @@
 <#--                            <w:t xml:space="preserve">问：你的姓名、年龄、现住地址和职业，联系电话是多少？                                                    </w:t>-->
 <#--                        </w:r>-->
 <#--                    </w:p>-->
-                    <#list record as item>
                     <w:p w:rsidR="00386D2B" w:rsidRPr="00FB0AE7" w:rsidRDefault="009D412E" w:rsidP="00386D2B">
                         <w:pPr>
                             <w:spacing w:line="600" w:lineRule="exact"/>
@@ -1389,10 +1388,9 @@
                                 <w:szCs w:val="24"/>
                                 <w:u w:val="single"/>
                             </w:rPr>
-                            <w:t xml:space="preserve">${item!''}                                                    </w:t>
+                            <w:t xml:space="preserve">${record!''}                                                    </w:t>
                         </w:r>
                     </w:p>
-                    </#list>
 <#--                    <w:p w:rsidR="00386D2B" w:rsidRPr="00FB0AE7" w:rsidRDefault="00386D2B" w:rsidP="00386D2B">-->
 <#--                        <w:pPr>-->
 <#--                            <w:spacing w:line="600" w:lineRule="exact"/>-->

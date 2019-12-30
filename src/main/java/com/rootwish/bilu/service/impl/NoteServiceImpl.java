@@ -42,9 +42,11 @@ public class NoteServiceImpl extends ServiceImpl<NoteMapper,NoteEntity> implemen
         queryWrapper.eq("information_id",informationId);
         NoteEntity one = this.getOne(queryWrapper);
         NoteModel noteModel = new NoteModel();
-        noteModel.setId(one.getId());
-        noteModel.setInformationId(one.getInformationId());
-        noteModel.setNoteText(one.getNoteText());
+        if(null != one) {
+            noteModel.setId(one.getId());
+            noteModel.setInformationId(one.getInformationId());
+            noteModel.setNoteText(one.getNoteText());
+        }
         return noteModel;
     }
 }

@@ -27,6 +27,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.web.HTMLEditor;
@@ -41,6 +42,8 @@ import java.io.File;
 import javax.xml.soap.Text;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -95,6 +98,7 @@ public class TreeViewController implements Initializable {
     private static ClassificationService classificationService;
 
     private static InformationEntity informationEntity;
+    private static String classfiName;
 
     @PostConstruct
     public void init() {
@@ -167,6 +171,7 @@ public class TreeViewController implements Initializable {
                     QueryWrapper queryWrapper = new QueryWrapper();
                     queryWrapper.eq("classify_name", name);
                     ClassificationEntity classificationEntity = classificationService.getOne(queryWrapper);
+                    classfiName = name;
                     QueryWrapper queryWrapper1 = new QueryWrapper();
                     if(null == classificationEntity) {
                         recordList.setItems(null);
@@ -180,6 +185,7 @@ public class TreeViewController implements Initializable {
                     }
                     ObservableList<String> strList = FXCollections.observableArrayList(Arrays.asList(recordEntity.getRecord().replace("问", "**问").split("\\*\\*")));
                     recordList.setItems(strList);
+
                 }
             }
         });
@@ -217,6 +223,7 @@ public class TreeViewController implements Initializable {
                         .replace("-", "月") + "日";
                 informationModel.setStartTime(newStartTime);
             }
+            informationModel.setClassificationName(classfiName);
             informationModel.setSite(site.getText());
             informationModel.setCertificateType(certificateType.getValue().toString());
             informationModel.setCertificateNumber(certificateNumber.getText());
@@ -271,7 +278,7 @@ public class TreeViewController implements Initializable {
             jFileChooser.showOpenDialog(null);*/
             System.out.println(System.getProperty("user.dir")+"\\workDoc");
             try {
-                Runtime.getRuntime().exec("explorer /e,/root,D:\\work\\bilu\\bilu\\src\\main\\resources\\template");
+                Runtime.getRuntime().exec("explorer /e,/root,"+System.getProperty("user.dir")+"\\workDoc");
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
@@ -282,8 +289,12 @@ public class TreeViewController implements Initializable {
             //查获时间
             //seizedTime.setValue();
             //笔录开始时间
+            String time = information.getStartTime().replace("年","-").replace("月","-").replace("日","");
+                LocalDate beginDateTime = LocalDate.parse(time, DateTimeFormatter.ofPattern("yyyy-M-d"));
+            startTime.setValue(beginDateTime);
 
             //笔录结束时间
+
 
             //询问地点
             site.setText(information.getSite());
@@ -339,9 +350,26 @@ public class TreeViewController implements Initializable {
             buckleSingleNumber.setText(information.getBuckleSingleNumber());
 
             //smoke
+            List<SmokeEntity> oldSmokeList = information.getSmoke();
+            if(oldSmokeList.size() >0) {
+                ObservableList<Smoke> list = FXCollections.observableArrayList();
+                for (SmokeEntity smokeEntity:oldSmokeList) {
+                    Smoke smoke = new Smoke();//构建值对象
+                    smoke.setType(smokeEntity.getSmokeName());
+                    smoke.setNum(smokeEntity.getPackOfNumber());
+                    smoke.setPrice(smokeEntity.getRetailPrice());
+                    smoke.setCode(smokeEntity.getTiaoBaoBarCode());
+                    type.setCellValueFactory(new PropertyValueFactory("type"));//映射
+                    num.setCellValueFactory(new PropertyValueFactory("num"));
+                    price.setCellValueFactory(new PropertyValueFactory("price"));
+                    code.setCellValueFactory(new PropertyValueFactory("code"));
+                    list.add(smoke);        //list添加值对象
+                }
+                tableView.setItems(list); //tableview添加list
+            }
 
             //笔录
-            record.appendText(information.getNote());
+            record.setText(information.getNote());
         }
 
 
@@ -369,10 +397,11 @@ public class TreeViewController implements Initializable {
     public void showStage(InformationEntity informationEntity) {
         this.informationEntity = informationEntity;
         Stage secondWindow=new Stage();
+        secondWindow.setTitle("案件信息");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/IndexView.fxml"));
         Scene scene= null;
         try {
-            scene = new Scene(loader.load(),1200,700);
+            scene = new Scene(loader.load(),1350,700);
         } catch (IOException e) {
             e.printStackTrace();
         }

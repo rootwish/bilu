@@ -59,8 +59,10 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
         informationEntity.setTheCaseNumber(informationModel.getTheCaseNumber());
         informationEntity.setLe(informationModel.getLe());
         informationEntity.setYear(informationModel.getYear());
-        ClassificationModel classification = classificationService.getClassification(informationModel.getClassificationName());
-        informationEntity.setClassificationId(classification.getId());
+        if(null != informationModel.getClassificationName()) {
+            ClassificationModel classification = classificationService.getClassification(informationModel.getClassificationName());
+            informationEntity.setClassificationId(classification.getId());
+        }
         informationEntity.setName(informationModel.getName());
         boolean rel = true;
         int informationid = informationMapper.insert(informationEntity);
@@ -149,7 +151,7 @@ public class InformationServiceImpl extends ServiceImpl<InformationMapper,Inform
         informationModel.setClassificationId(informationEntity.getClassificationId());
         informationModel.setName(informationEntity.getName());
         QueryWrapper<SmokeEntity> smokeWrapper = new QueryWrapper<>();
-        smokeWrapper.eq("information_id",informationEntity.getId());
+        smokeWrapper.eq("information_id",informationEntity.getId().toString());
         List<SmokeEntity> smokeEntities = smokeMapper.selectList(smokeWrapper);
         informationModel.setSmoke(smokeEntities);
         RecordModel recordFoClassificationID = recordService.getRecordFoClassificationID(informationEntity.getClassificationId());

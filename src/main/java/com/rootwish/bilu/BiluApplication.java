@@ -8,6 +8,9 @@ import com.rootwish.bilu.view.IndexView;
 import com.rootwish.bilu.view.RecordView;
 import com.rootwish.bilu.view.NavigationPage;
 import de.felixroske.jfxsupport.AbstractJavaFxApplicationSupport;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -67,21 +70,20 @@ public class BiluApplication extends AbstractJavaFxApplicationSupport {
 //		freeMarkerWordService.exporMillCertificateWord(informationModel);
 
 //		SpringApplication.run(BiluApplication.class, args);
-		launch(BiluApplication.class , NavigationPage.class ,args);
+		launch(args);
 
 
 	}
 
-//	@Override
-//	public void start(Stage primaryStage) throws Exception{
-//		FXMLLoader loader = new FXMLLoader();
-//		loader.setLocation(BiluApplication.class.getResource("IndexView.fxml"));
-//
+	@Override
+	public void start(Stage primaryStage) throws Exception{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(BiluApplication.class.getResource("/view/NavigationPage.fxml"));
 //		HBox rootLayout = (HBox) loader.load();
-//
-//		primaryStage.setScene(new Scene(rootLayout, 225, 275));
-//		primaryStage.show();
-//
-//	}
+		primaryStage.setScene(new Scene(loader.load(), 600, 400));
+		primaryStage.setTitle("广东省乐昌市烟草专卖局-笔录系统");
+		primaryStage.show();
+
+	}
 
 }

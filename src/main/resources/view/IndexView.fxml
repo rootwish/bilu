@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.web.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -9,11 +10,11 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-
 <?import javafx.scene.text.Font?>
-<Pane prefHeight="656.0" prefWidth="1274.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rootwish.bilu.controller.TreeViewController">
+
+<Pane prefHeight="656.0" prefWidth="1313.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rootwish.bilu.controller.TreeViewController">
    <children>
-    <TreeView fx:id="treeView" prefHeight="582.0" prefWidth="209.0" />
+    <TreeView fx:id="treeView" prefHeight="556.0" prefWidth="209.0" />
       <GridPane layoutX="209.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="375.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.0" minWidth="10.0" prefWidth="107.0" />
@@ -69,7 +70,7 @@
             <TextField fx:id="certificateNumber" GridPane.columnIndex="1" GridPane.rowIndex="6" />
          </children>
       </GridPane>
-      <TableView fx:id="tableView" layoutX="604.0" layoutY="1.0" prefHeight="457.0" prefWidth="316.0">
+      <TableView fx:id="tableView" layoutX="985.0" layoutY="14.0" prefHeight="457.0" prefWidth="316.0">
         <columns>
           <TableColumn fx:id="type" prefWidth="75.0" text="品种" />
           <TableColumn fx:id="num" prefWidth="68.0" text="数量" />
@@ -77,19 +78,23 @@
             <TableColumn fx:id="code" prefWidth="75.0" text="条形码" />
         </columns>
       </TableView>
-      <TextField fx:id="newType" layoutX="604.0" layoutY="476.0" prefHeight="4.0" prefWidth="72.0" />
-      <TextField fx:id="newNum" layoutX="677.0" layoutY="476.0" prefHeight="23.0" prefWidth="80.0" />
-      <TextField fx:id="newPrice" layoutX="757.0" layoutY="476.0" prefHeight="23.0" prefWidth="80.0" />
-      <Button fx:id="add" layoutX="737.0" layoutY="513.0" mnemonicParsing="false" text="新增" />
-      <TextField fx:id="newCode" layoutX="837.0" layoutY="476.0" prefHeight="23.0" prefWidth="80.0" />
-      <Button fx:id="save" layoutX="652.0" layoutY="594.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="131.0" text="保存" textFill="#0d18ee" />
-      <Label layoutX="932.0" layoutY="14.0" text="笔录" />
-      <TextArea fx:id="record" layoutX="920.0" layoutY="38.0" prefHeight="286.0" prefWidth="353.0" />
-       <ListView fx:id="recordList" layoutX="920.0" layoutY="365.0" prefHeight="223.0" prefWidth="353.0" />
-      <Button fx:id="preview" layoutX="1097.0" layoutY="596.0" mnemonicParsing="false" text="预览" textFill="#252ab5">
+      <TextField fx:id="newType" layoutX="987.0" layoutY="487.0" prefHeight="4.0" prefWidth="72.0" />
+      <TextField fx:id="newNum" layoutX="1060.0" layoutY="487.0" prefHeight="23.0" prefWidth="80.0" />
+      <TextField fx:id="newPrice" layoutX="1140.0" layoutY="487.0" prefHeight="23.0" prefWidth="80.0" />
+      <Button fx:id="add" layoutX="1110.0" layoutY="528.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="72.0" text="新增" />
+      <TextField fx:id="newCode" layoutX="1220.0" layoutY="487.0" prefHeight="23.0" prefWidth="80.0" />
+      <Button fx:id="save" layoutX="622.0" layoutY="579.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="150.0" text="保存" textFill="#0d18ee">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Label layoutX="598.0" layoutY="14.0" text="笔录" />
+      <TextArea fx:id="record" layoutX="598.0" layoutY="38.0" prefHeight="357.0" prefWidth="375.0" />
+       <ListView fx:id="recordList" layoutX="599.0" layoutY="424.0" prefHeight="127.0" prefWidth="375.0" />
+      <Button fx:id="preview" layoutX="456.0" layoutY="579.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="80.0" text="预览" textFill="#252ab5">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
+      <Label layoutX="598.0" layoutY="404.0" text="笔录模板" />
    </children>
 </Pane>

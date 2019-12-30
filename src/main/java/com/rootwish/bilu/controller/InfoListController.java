@@ -135,9 +135,10 @@ public class InfoListController implements Initializable {
     public void showStage() {
         Stage secondWindow=new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/InfoList.fxml"));
+        secondWindow.setTitle("案件列表");
         Scene scene= null;
         try {
-            scene = new Scene(loader.load(),1000,500);
+            scene = new Scene(loader.load(),600,450);
         } catch (IOException e) {
             e.printStackTrace();
         }
